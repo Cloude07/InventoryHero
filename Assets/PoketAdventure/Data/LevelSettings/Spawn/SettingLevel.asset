@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b446be813843b34bb049d2f093b598c, type: 3}
+  m_Name: SettingLevel
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Enemy.SOSettingsLevel
+  initialPoolSize: 10
+  spawnEntries:
+  - {fileID: 11400000, guid: 0a3e16406f129b7429ac85f018c34361, type: 2}
+  - {fileID: 11400000, guid: e468f6143194dbe49bd10bc53d2d64e2, type: 2}
