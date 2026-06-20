@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  Type: 3
-  _icon: {fileID: 21300000, guid: 9eed90b7fb2f9154a903243198e2e297, type: 3}
-  _name: Iron Sword
-  _description: 'its sword armor '
-  _count: 1
-  _isEquipingItem: 1
+  nameItem: Sword
+  icon: {fileID: 21300000, guid: 9eed90b7fb2f9154a903243198e2e297, type: 3}
+  itemType: 2
+  equipedType: 2
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 1
+  isEquipingItem: 1
