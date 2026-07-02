@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 155640804}
   - component: {fileID: 155640807}
   - component: {fileID: 155640806}
-  - component: {fileID: 155640805}
+  - component: {fileID: 155640808}
   m_Layer: 5
   m_Name: itemSlot (6)
   m_TagString: Untagged
@@ -235,24 +235,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &155640805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155640803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 972499391}
-  quantityText: {fileID: 512739661}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &155640806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +273,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155640803}
   m_CullTransparentMesh: 1
+--- !u!114 &155640808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155640803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 972499391}
+  textAmount: {fileID: 512739661}
+  SelectView: {fileID: 1959887408}
 --- !u!1 &228565818
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +634,7 @@ GameObject:
   - component: {fileID: 460329397}
   - component: {fileID: 460329400}
   - component: {fileID: 460329399}
-  - component: {fileID: 460329398}
+  - component: {fileID: 460329401}
   m_Layer: 5
   m_Name: itemSlot (3)
   m_TagString: Untagged
@@ -665,24 +664,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &460329398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460329396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 952396656}
-  quantityText: {fileID: 712079043}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &460329399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +702,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460329396}
   m_CullTransparentMesh: 1
+--- !u!114 &460329401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460329396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 952396656}
+  textAmount: {fileID: 712079043}
+  SelectView: {fileID: 623117728}
 --- !u!1 &512739659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1313,7 @@ GameObject:
   - component: {fileID: 693210993}
   - component: {fileID: 693210996}
   - component: {fileID: 693210995}
-  - component: {fileID: 693210994}
+  - component: {fileID: 693210997}
   m_Layer: 5
   m_Name: itemSlot (1)
   m_TagString: Untagged
@@ -1345,24 +1343,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &693210994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693210992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 14339881}
-  quantityText: {fileID: 809115996}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &693210995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,6 +1381,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693210992}
   m_CullTransparentMesh: 1
+--- !u!114 &693210997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693210992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 14339881}
+  textAmount: {fileID: 809115996}
+  SelectView: {fileID: 1436012401}
 --- !u!1 &712079041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,7 +1758,7 @@ GameObject:
   - component: {fileID: 797355885}
   - component: {fileID: 797355888}
   - component: {fileID: 797355887}
-  - component: {fileID: 797355886}
+  - component: {fileID: 797355889}
   m_Layer: 5
   m_Name: itemSlot (5)
   m_TagString: Untagged
@@ -1791,24 +1788,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &797355886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797355884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 1767493699}
-  quantityText: {fileID: 1768138259}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &797355887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,6 +1826,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797355884}
   m_CullTransparentMesh: 1
+--- !u!114 &797355889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797355884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 1767493699}
+  textAmount: {fileID: 1768138259}
+  SelectView: {fileID: 291573592}
 --- !u!1 &809115994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2399,7 @@ GameObject:
   - component: {fileID: 1064859732}
   - component: {fileID: 1064859735}
   - component: {fileID: 1064859734}
-  - component: {fileID: 1064859733}
+  - component: {fileID: 1064859736}
   m_Layer: 5
   m_Name: itemSlot (2)
   m_TagString: Untagged
@@ -2433,24 +2429,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1064859733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064859731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 563226692}
-  quantityText: {fileID: 982952807}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &1064859734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,6 +2467,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064859731}
   m_CullTransparentMesh: 1
+--- !u!114 &1064859736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064859731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 563226692}
+  textAmount: {fileID: 982952807}
+  SelectView: {fileID: 605958357}
 --- !u!1 &1136554953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,7 +2495,7 @@ GameObject:
   - component: {fileID: 1136554954}
   - component: {fileID: 1136554957}
   - component: {fileID: 1136554956}
-  - component: {fileID: 1136554955}
+  - component: {fileID: 1136554958}
   m_Layer: 5
   m_Name: itemSlot (8)
   m_TagString: Untagged
@@ -2530,24 +2525,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1136554955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136554953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 228565820}
-  quantityText: {fileID: 2028136284}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &1136554956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2586,6 +2563,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136554953}
   m_CullTransparentMesh: 1
+--- !u!114 &1136554958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136554953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 228565820}
+  textAmount: {fileID: 2028136284}
+  SelectView: {fileID: 718736725}
 --- !u!1 &1203550819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203550821}
   - component: {fileID: 1203550820}
+  - component: {fileID: 1203550822}
   m_Layer: 0
   m_Name: GameScope
   m_TagString: Untagged
@@ -2640,6 +2635,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1203550822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203550819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a130a555a0616804680b971fbae31938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.TestManagerInventory
+  itemSlot: []
+  itemConfig: []
+  _itemName: 
+  _quantity: 0
+  _sprite: {fileID: 0}
 --- !u!1 &1313892212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,7 +4032,7 @@ GameObject:
   - component: {fileID: 2118149453}
   - component: {fileID: 2118149456}
   - component: {fileID: 2118149455}
-  - component: {fileID: 2118149454}
+  - component: {fileID: 2118149457}
   m_Layer: 5
   m_Name: itemSlot (7)
   m_TagString: Untagged
@@ -4050,24 +4062,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2118149454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118149452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 1551856653}
-  quantityText: {fileID: 747209941}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &2118149455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4106,6 +4100,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118149452}
   m_CullTransparentMesh: 1
+--- !u!114 &2118149457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118149452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 1551856653}
+  textAmount: {fileID: 747209941}
+  SelectView: {fileID: 1313892212}
 --- !u!1 &2134391386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4117,7 +4128,7 @@ GameObject:
   - component: {fileID: 2134391387}
   - component: {fileID: 2134391390}
   - component: {fileID: 2134391389}
-  - component: {fileID: 2134391388}
+  - component: {fileID: 2134391391}
   m_Layer: 5
   m_Name: itemSlot (4)
   m_TagString: Untagged
@@ -4147,24 +4158,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2134391388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134391386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 2086526800}
-  quantityText: {fileID: 1537329061}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
 --- !u!114 &2134391389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,6 +4196,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134391386}
   m_CullTransparentMesh: 1
+--- !u!114 &2134391391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134391386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 2086526800}
+  textAmount: {fileID: 1537329061}
+  SelectView: {fileID: 1700729938}
 --- !u!224 &27461576813533981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6355,7 +6365,6 @@ GameObject:
   - component: {fileID: 6063884264349703802}
   - component: {fileID: 4819627344285585316}
   - component: {fileID: 3473322625650383837}
-  - component: {fileID: 6063884264349703803}
   m_Layer: 5
   m_Name: EquipedArrmor
   m_TagString: Untagged
@@ -6374,7 +6383,6 @@ GameObject:
   - component: {fileID: 6063884263444336882}
   - component: {fileID: 4819627345057775916}
   - component: {fileID: 3473322626959316309}
-  - component: {fileID: 6063884263444336883}
   m_Layer: 5
   m_Name: EquipedRing
   m_TagString: Untagged
@@ -6393,7 +6401,6 @@ GameObject:
   - component: {fileID: 6063884263452984327}
   - component: {fileID: 4819627344999323097}
   - component: {fileID: 3473322626949087648}
-  - component: {fileID: 6063884263452984328}
   m_Layer: 5
   m_Name: EqupedHelm
   m_TagString: Untagged
@@ -6412,7 +6419,6 @@ GameObject:
   - component: {fileID: 6063884263322535591}
   - component: {fileID: 4819627344860288889}
   - component: {fileID: 3473322626820670208}
-  - component: {fileID: 6063884263322535592}
   m_Layer: 5
   m_Name: EquipedSheeld
   m_TagString: Untagged
@@ -6431,7 +6437,6 @@ GameObject:
   - component: {fileID: 6063884263978029077}
   - component: {fileID: 4819627344509403595}
   - component: {fileID: 3473322627507885490}
-  - component: {fileID: 6063884263978029078}
   m_Layer: 5
   m_Name: EquipedBoots
   m_TagString: Untagged
@@ -6450,7 +6455,6 @@ GameObject:
   - component: {fileID: 6063884264040845855}
   - component: {fileID: 4819627344580805569}
   - component: {fileID: 3473322627570767800}
-  - component: {fileID: 6063884264040845856}
   m_Layer: 5
   m_Name: EquipedSword
   m_TagString: Untagged
@@ -6469,7 +6473,6 @@ GameObject:
   - component: {fileID: 6063884263582649984}
   - component: {fileID: 4819627344651034462}
   - component: {fileID: 3473322627097824039}
-  - component: {fileID: 6063884263582649985}
   m_Layer: 5
   m_Name: EquipedAmulet
   m_TagString: Untagged
@@ -6733,25 +6736,6 @@ RectTransform:
   m_AnchoredPosition: {x: 27.75, y: -10}
   m_SizeDelta: {x: -108.9, y: -17.13}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6063884263322535592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256663371091626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 4
 --- !u!224 &6063884263444336882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6773,25 +6757,6 @@ RectTransform:
   m_AnchoredPosition: {x: 27.75, y: -26.63501}
   m_SizeDelta: {x: -108.9, y: -26.635}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6063884263444336883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256663191034111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 4
 --- !u!224 &6063884263452984327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6813,25 +6778,6 @@ RectTransform:
   m_AnchoredPosition: {x: -29.25, y: 133.72}
   m_SizeDelta: {x: -553.31, y: -320.71}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6063884263452984328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256663233235978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 1
 --- !u!224 &6063884263582649984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6853,25 +6799,6 @@ RectTransform:
   m_AnchoredPosition: {x: -232.98999, y: 133.72}
   m_SizeDelta: {x: -570.05, y: -320.71}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6063884263582649985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256664134911629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 8048132399947524523}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 5
 --- !u!224 &6063884263978029077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6893,25 +6820,6 @@ RectTransform:
   m_AnchoredPosition: {x: 33.063995, y: 8.119995}
   m_SizeDelta: {x: -74.04, y: -4.53}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6063884263978029078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256663724857368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 5
 --- !u!224 &6063884264040845855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6933,25 +6841,6 @@ RectTransform:
   m_AnchoredPosition: {x: 52.035004, y: -6.949997}
   m_SizeDelta: {x: -89.399, y: -23.34}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6063884264040845856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256663787805202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 3
 --- !u!224 &6063884264349703802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6973,25 +6862,6 @@ RectTransform:
   m_AnchoredPosition: {x: 26.056, y: -10}
   m_SizeDelta: {x: -82.269, y: -24.27}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6063884264349703803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626256662485948023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4e04d4656913a40af462e0e3a0c3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.EquipmentSlot
-  icon: {fileID: 0}
-  quantityText: {fileID: 0}
-  currentItem:
-    item: {fileID: 0}
-    quantity: 0
-    durability: 0
-  slotType: 2
 --- !u!1 &6094749833078979644
 GameObject:
   m_ObjectHideFlags: 0
@@ -8420,26 +8290,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8314247799608576576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b09e5a35c8c194b9bc773d9d469e88, type: 3}
+  m_Script: {fileID: 11500000, guid: e5cbb7a1dc18d0f43b690619f10744ef, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventoryManager
-  inventorySlots:
-  - {fileID: 8905465500823713474}
-  - {fileID: 693210994}
-  - {fileID: 1064859733}
-  - {fileID: 460329398}
-  - {fileID: 2134391388}
-  - {fileID: 797355886}
-  - {fileID: 155640805}
-  - {fileID: 2118149454}
-  - {fileID: 1136554955}
-  headSlot: {fileID: 6063884263452984328}
-  bodySlot: {fileID: 6063884264349703803}
-  bootsSlot: {fileID: 6063884263978029078}
-  weaponSlot: {fileID: 6063884264040845856}
-  sheeldSlot: {fileID: 6063884263322535592}
-  ringSlot: {fileID: 6063884263444336883}
-  amuletSlot: {fileID: 6063884263582649985}
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Inventory
+  HealthItem: {fileID: 11400000, guid: 031976f3ed8816e44a7968fa22a18eaa, type: 2}
+  SwordItem: {fileID: 11400000, guid: 3750b9963c5de9a46be4d58c65bf41ed, type: 2}
+  inventoryObject: {fileID: 7103784680542381758}
+  inventoryEquipedObject: {fileID: 0}
+  dragItemIcon: {fileID: 1558715127}
 --- !u!222 &8340312540150608846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8652,15 +8510,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7036264793347768012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fc2a49c296a3f4a8c374145666d6e3, type: 3}
+  m_Script: {fileID: 11500000, guid: c6c719d52dacf4a42ae5ad3cc661fa8f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.InventorySystem.InventorySlot
-  icon: {fileID: 4611997087302947306}
-  quantityText: {fileID: 7928284588119241735}
-  currentItem:
-    item: {fileID: 11400000, guid: 7c46ffcacab10de4c80e82ec53feb3de, type: 2}
-    quantity: 0
-    durability: 0
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Slot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  IconImage: {fileID: 4611997087302947306}
+  textAmount: {fileID: 7928284588119241735}
+  SelectView: {fileID: 739706163266753272}
 --- !u!1 &8945351539973616178
 GameObject:
   m_ObjectHideFlags: 0
