@@ -83,15 +83,16 @@ namespace CloudeDev.Game.Player
         {
             switch (statsType)
             {
-                case StatsPlayer.Level: Level = value; break;
-                case StatsPlayer.Health: Health = value; break;
-                case StatsPlayer.MaxHealth: MaxHealth = value; break;
-                case StatsPlayer.Armor: Armor = value; break;
-                case StatsPlayer.MaxArmor: MaxArmor = value; break;
-                case StatsPlayer.Strength: Strength = value; break;
-                case StatsPlayer.Dexterity: Dexterity = value; break;
-                case StatsPlayer.Coin: Coin = value; break;
-                case StatsPlayer.Speed: Speed = value; break;
+                case StatsPlayer.Level: Level += value; break;   
+                case StatsPlayer.Health: Health += value; break;   
+                case StatsPlayer.MaxHealth: MaxHealth += value; break;
+                case StatsPlayer.Armor: Armor += value; break;
+                case StatsPlayer.MaxArmor: MaxArmor += value; break;
+                case StatsPlayer.Strength: Strength += value; break;
+                case StatsPlayer.Dexterity: Dexterity += value; break;
+                case StatsPlayer.Coin: Coin += value; break;
+                case StatsPlayer.Speed: Speed += value; break;
+                default: return;
             }
 
             OnStatsChanged?.Invoke(statsType, GetStatValue(statsType));
@@ -99,7 +100,7 @@ namespace CloudeDev.Game.Player
 
         public void GetDamage(int value)
         {
-            Health -= value;
+            ChangeStats(-value, StatsPlayer.Health);   
         }
 
         private int GetStatValue(StatsPlayer statsType) => statsType switch
@@ -112,7 +113,7 @@ namespace CloudeDev.Game.Player
             StatsPlayer.Strength => Strength,
             StatsPlayer.Dexterity => Dexterity,
             StatsPlayer.Coin => Coin,
-            StatsPlayer.Speed => Speed,
+            StatsPlayer.Speed => Speed,        
             _ => 0
         };
     }

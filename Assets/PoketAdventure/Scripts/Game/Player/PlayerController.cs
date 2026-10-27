@@ -35,11 +35,6 @@ namespace CloudeDev.Game.Player
 
         }
 
-        private void OnDisable()
-        {
-            _playerHealth.OnPlayerDied -= _playerHealth_OnPlayerDied;
-        }
-
         private void _playerHealth_OnPlayerDied()
         {
             _playerStateMachine.SwitchState<DeadState>();
@@ -71,6 +66,10 @@ namespace CloudeDev.Game.Player
           _playerStateMachine.SwitchState<IdleState>();
         }
 
-
+        private void OnDisable()
+        {
+            if (_playerHealth != null)
+                _playerHealth.OnPlayerDied -= _playerHealth_OnPlayerDied;
+        }
     }
 }

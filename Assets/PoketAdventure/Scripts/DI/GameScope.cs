@@ -1,5 +1,6 @@
 using CloudeDev.Game;
 using CloudeDev.Game.Enemy.Pool;
+using CloudeDev.Game.Inventory;
 using CloudeDev.Game.Player;
 using CloudeDev.Game.Player.Factories;
 using CloudeDev.Game.Player.Service;
@@ -15,33 +16,34 @@ namespace CloudeDev.DI
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private PlayerStatsUI _playerStatsUI;
         [SerializeField] private EnemyPool _enemyPool;
-
+        [SerializeField] private Inventory _inventory;
         protected override void Configure(IContainerBuilder builder)
         {
-            // Фабрика игрока создает модель
             builder.Register<IPlayerFactory, DefaultPlayerFactory>(Lifetime.Singleton);
 
             builder.Register<PlayerStatsModel>(resolver =>
             {
                 var factory = resolver.Resolve<IPlayerFactory>();
                 return factory.CreateNewGameStats();
-            }, Lifetime.Singleton).As<IPlayerStats, IPlayerStatsReadonly, PlayerStatsModel>();
+            }, Lifetime.Singleton)
+            .AsSelf()                                                              
+            .As<IPlayerStats, IPlayerStatsReadonly, IPlayerStatsModifier>();      
 
             builder.Register<PlayerStateMachine>(resolver =>
             {
                 var stats = resolver.Resolve<IPlayerStats>();
                 var factory = resolver.Resolve<IPlayerFactory>();
-                return factory.CreateStateMachine(stats);   // нужно доработать фабрику
+                return factory.CreateStateMachine(stats);
             }, Lifetime.Singleton);
 
-            //GameObjects
+            // GameObjects
             builder.RegisterComponent(_playerController).As<IPlayerView>();
-
             builder.RegisterComponent(_playerStatsUI);
             builder.RegisterComponent(_enemyPool);
+            builder.RegisterComponent(_inventory);
+            builder.RegisterComponentInHierarchy<EquipedSlot>();
 
-            // Сервисы
-            ///Players
+            // Players
             builder.Register<IPlayerHealth, PlayerHealthService>(Lifetime.Singleton);
             builder.Register<IPlayerWallet, PlayerWalletService>(Lifetime.Singleton);
             builder.Register<IPlayerLevel, PlayerLevelService>(Lifetime.Singleton);
@@ -51,7 +53,6 @@ namespace CloudeDev.DI
 
             // Entry Point
             builder.RegisterEntryPoint<GameEntryPoint>();
-
         }
     }
 }

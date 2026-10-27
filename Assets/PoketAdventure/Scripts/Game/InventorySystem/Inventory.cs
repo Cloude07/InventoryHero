@@ -1,7 +1,8 @@
-using System.Collections.Generic;
 using CloudeDev.Game.Player;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace CloudeDev.Game.Inventory
 {
@@ -22,7 +23,9 @@ namespace CloudeDev.Game.Inventory
         public GameObject inventoryObject;
         public GameObject inventoryEquipedObject;
         public Image dragItemIcon;
-        [SerializeField] private PlayerStats playerStats; // ← назначить
+
+        private IPlayerStatsModifier playerStats;
+        private IPlayerStatsReadonly playerStatsRead;
 
         private ISlot draggetSlot = null;
         private bool IsDraging = false;
@@ -41,6 +44,13 @@ namespace CloudeDev.Game.Inventory
             allSlots.AddRange(inventoryEquipedSlots);
 
             Debug.Log($"[Inventory] inventory={inventorySlots.Count}, equipped={inventoryEquipedSlots.Count}");
+        }
+
+        [Inject]
+        private void Construct(IPlayerStatsModifier statsMod, IPlayerStatsReadonly statsRead)
+        {
+            playerStats = statsMod;
+            playerStatsRead = statsRead;
         }
 
         private void Update()
@@ -70,26 +80,30 @@ namespace CloudeDev.Game.Inventory
 
             var hovered = GetHoveredSlot();
             if (hovered == null || hovered is EquipedSlot) return;
-            if (!hovered.IsHasItem() || playerStats == null) return;
+            if (!hovered.IsHasItem() || playerStats == null || playerStatsRead == null) return;
 
             var item = hovered.GetItem();
 
             switch (item.itemType)
             {
                 case ItemType.HealthPoint:
+                    // 🔴 проверка: не тратим аптечку, если HP уже полное
+                    if (playerStatsRead.Health >= playerStatsRead.MaxHealth) return;
+
                     playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Health);
-                    break;
+                    hovered.RemoveItemAmount(1, item);
+                    return;   // ← выходим, чтобы нижний RemoveItemAmount не сработал
+
                 case ItemType.Coin:
                     playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Coin);
-                    break;
-                default:
-                    return; // не расходник
-            }
+                    hovered.RemoveItemAmount(1, item);
+                    return;
 
-            hovered.RemoveItemAmount(1, item);
+                default:
+                    return;   // не расходник — ничего не делаем
+            }
         }
 
-        // ---------------- ДОБАВЛЕНИЕ ----------------
 
         public void AddItem(ItemConfig itemToAdd, int amount)
         {
@@ -129,7 +143,6 @@ namespace CloudeDev.Game.Inventory
                 Debug.Log($"Inventory is full, could not add {remaining} of {itemToAdd.nameItem}");
         }
 
-        // ---------------- ДРАГ ----------------
 
         private void StartDrag()
         {
@@ -144,6 +157,7 @@ namespace CloudeDev.Game.Inventory
                     dragItemIcon.sprite = hovered.GetItem().icon;
                     dragItemIcon.color = colorDragItem;
                     dragItemIcon.enabled = true;
+                    dragItemIcon.transform.SetAsLastSibling();
                 }
             }
         }
@@ -156,7 +170,6 @@ namespace CloudeDev.Game.Inventory
                 if (hovered != null)
                     HandleDrop(draggetSlot, hovered);
 
-                // ⚠️ сбрасываем состояние всегда, даже если бросили мимо слотов
                 dragItemIcon.enabled = false;
                 draggetSlot = null;
                 IsDraging = false;
@@ -165,8 +178,28 @@ namespace CloudeDev.Game.Inventory
 
         private void UpdateDragItemPosition()
         {
-            if (IsDraging)
-                dragItemIcon.rectTransform.position = Input.mousePosition; // для Screen Space Overlay
+            if (!IsDraging || dragItemIcon == null) return;
+
+            var rt = dragItemIcon.rectTransform;
+            var parentRT = rt.parent as RectTransform;
+            if (parentRT == null) return;
+
+            // Камера Canvas'а (для Screen Space - Camera это canvas.worldCamera,
+            // для Overlay — null, RectTransformUtility сам разберётся)
+            Camera cam = null;
+            if (dragItemIcon.canvas != null &&
+                dragItemIcon.canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+            {
+                cam = dragItemIcon.canvas.worldCamera != null
+                    ? dragItemIcon.canvas.worldCamera
+                    : Camera.main;
+            }
+
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    parentRT, Input.mousePosition, cam, out var localPoint))
+            {
+                rt.localPosition = localPoint;
+            }
         }
 
         // ---------------- DROP ----------------

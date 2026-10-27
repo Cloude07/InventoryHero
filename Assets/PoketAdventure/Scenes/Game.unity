@@ -577,17 +577,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2038390957601228849, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
   m_PrefabInstance: {fileID: 1888213722}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &460306403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4545779146111042516, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-  m_PrefabInstance: {fileID: 1888213722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460306396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba03909118b6bd4b9afd1b92fab9fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Player.PlayerStats
 --- !u!1 &460329396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,6 +2593,7 @@ MonoBehaviour:
   _playerController: {fileID: 295706546}
   _playerStatsUI: {fileID: 2912842971859708636}
   _enemyPool: {fileID: 2094609187}
+  _inventory: {fileID: 8314247799608576577}
 --- !u!4 &1203550821
 Transform:
   m_ObjectHideFlags: 0
@@ -3471,7 +3461,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4545779146111042516, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6684,7 +6675,6 @@ MonoBehaviour:
   type: 3
   iconImage: {fileID: 8048132399737348492}
   selectView: {fileID: 2734346856490508958}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884263444336882
 RectTransform:
@@ -6724,7 +6714,6 @@ MonoBehaviour:
   type: 2
   iconImage: {fileID: 8048132399817406425}
   selectView: {fileID: 2734346856629220555}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884263452984327
 RectTransform:
@@ -6764,7 +6753,6 @@ MonoBehaviour:
   type: 1
   iconImage: {fileID: 8048132399876383532}
   selectView: {fileID: 2734346856620040254}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884263582649984
 RectTransform:
@@ -6804,7 +6792,6 @@ MonoBehaviour:
   type: 0
   iconImage: {fileID: 8048132399947524523}
   selectView: {fileID: 2734346856767531705}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884263978029077
 RectTransform:
@@ -6844,7 +6831,6 @@ MonoBehaviour:
   type: 6
   iconImage: {fileID: 8048132400359552830}
   selectView: {fileID: 2734346857177461804}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884264040845855
 RectTransform:
@@ -6884,7 +6870,6 @@ MonoBehaviour:
   type: 5
   iconImage: {fileID: 8048132400296736052}
   selectView: {fileID: 2734346857240409638}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!224 &6063884264349703802
 RectTransform:
@@ -6924,7 +6909,6 @@ MonoBehaviour:
   type: 4
   iconImage: {fileID: 8048132398441232721}
   selectView: {fileID: 2734346857468426819}
-  playerStats: {fileID: 460306403}
   equipParent: {fileID: 0}
 --- !u!1 &6094749833078979644
 GameObject:
@@ -8369,7 +8353,6 @@ MonoBehaviour:
   inventoryObject: {fileID: 1709973968}
   inventoryEquipedObject: {fileID: 3924338947610119399}
   dragItemIcon: {fileID: 1558715127}
-  playerStats: {fileID: 460306403}
 --- !u!222 &8340312540150608846
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace CloudeDev.Game.Ui
     {
         private IPlayerStatsReadonly _playerStats;
         private IPlayerView _playerView;
+        private bool _subscribed;
 
         [SerializeField] private StatsDisplayUI _statsDisplayUI;
         [SerializeField] private Button _nextButton;
@@ -21,69 +22,81 @@ namespace CloudeDev.Game.Ui
         {
             _playerStats = playerStatsReadonly;
             _playerView = playerView;
-
-            _playerStats.OnStatsChanged += OnStatsChanged;
-       
+            Subscribe();
         }
+
+        private void OnEnable() => Subscribe();
+        private void OnDisable() => Unsubscribe();
 
         private void Start()
         {
-            _nextButton.onClick.AddListener(OnClickNext);
+            RefreshAllStats();
         }
 
-        private void OnNextWaveChange()
+        private void Subscribe()
         {
-            _statsDisplayUI.NextWaveIsActive(true);
+            if (_subscribed || _playerStats == null) return;
+            _playerStats.OnStatsChanged += OnStatsChanged;
+            if (_nextButton != null)
+                _nextButton.onClick.AddListener(OnClickNext);
+            _subscribed = true;
+            RefreshAllStats();
         }
 
-        private void OnStatsChanged(StatsPlayer stats, int value)
+        private void Unsubscribe()
+        {
+            if (!_subscribed) return;
+            _playerStats.OnStatsChanged -= OnStatsChanged;
+            if (_nextButton != null)
+                _nextButton.onClick.RemoveListener(OnClickNext);
+            _subscribed = false;
+        }
+
+        private void RefreshAllStats()
+        {
+            if (_playerStats == null) return;
+            _statsDisplayUI.ChangeTextHeath(_playerStats.Health.ToString());
+            _statsDisplayUI.ChangeTextArmor(_playerStats.Armor.ToString());
+            _statsDisplayUI.ChangeTextStrength(_playerStats.Strength.ToString());
+            _statsDisplayUI.ChangeTextDexterity(_playerStats.Dexterity.ToString());
+            _statsDisplayUI.ChangeTextCoinCurrent(_playerStats.Coin.ToString());
+            _statsDisplayUI.ChangeSliderHealth(_playerStats.Health, _playerStats.MaxHealth);
+        
+        }
+
+        private void OnStatsChanged(StatsPlayer stats, int newValue)
         {
             switch (stats)
             {
                 case StatsPlayer.Health:
-                    _statsDisplayUI.ChangeTextHeath(value.ToString());
+                    _statsDisplayUI.ChangeSliderHealth(newValue, _playerStats.MaxHealth); 
+                    break;
+                case StatsPlayer.MaxHealth:
+                    _statsDisplayUI.ChangeSliderHealth(_playerStats.Health, newValue);
+                    _statsDisplayUI.ChangeTextHeath(newValue.ToString());
                     break;
                 case StatsPlayer.Dexterity:
-                    _statsDisplayUI.ChangeTextDexterity(value.ToString());
+                    _statsDisplayUI.ChangeTextDexterity(newValue.ToString());
                     break;
                 case StatsPlayer.Strength:
-                    _statsDisplayUI.ChangeTextStrength(value.ToString());
+                    _statsDisplayUI.ChangeTextStrength(newValue.ToString());
                     break;
                 case StatsPlayer.Armor:
-                    _statsDisplayUI.ChangeTextArmor(value.ToString());
+                    _statsDisplayUI.ChangeTextArmor(newValue.ToString());
+                    break;
+                case StatsPlayer.Coin:
+                    _statsDisplayUI.ChangeTextCoinCurrent(newValue.ToString());
                     break;
             }
-        }
-
-        private void OnDisable()
-        {
-            _playerStats.OnStatsChanged -= OnStatsChanged;
-            _nextButton.onClick.RemoveListener(OnClickNext);
-
-        }
-
-        private void ShowLevelUpEffect(int value)
-        {
-           
         }
 
         private void OnClickNext()
         {
             _statsDisplayUI.NextWaveIsActive(false);
-
             _playerView.IsRunning();
             _enemyPool.SpawnNextEnemy();
         }
 
-
-
-        public void OnClickVisible() => 
-            _nextButton.gameObject.SetActive(true);
-
-        private void UpdateCoinUI(int value) =>
-          _statsDisplayUI.ChangeTextCoinCurrent(value.ToString());
-        
-
-
+        public void OnClickVisible() => _nextButton.gameObject.SetActive(true);
     }
 }

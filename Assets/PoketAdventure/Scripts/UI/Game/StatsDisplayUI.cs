@@ -36,8 +36,12 @@ namespace CloudeDev.UI
         public void ChangeTextCoinCurrent(string value) =>
             _coinText.SetText($"Coin: {value}");
 
-        public void ChangeSliderHealth(int value) =>
-            _healthSlider.value = value;
+        public void ChangeSliderHealth(int current, int max)
+        {
+            if (_healthSlider == null) return;
+            _healthSlider.maxValue = max;
+            _healthSlider.value = current;
+        }
 
         public void NextWaveIsActive(bool isActive) =>
             _nextButton.gameObject.SetActive(isActive);

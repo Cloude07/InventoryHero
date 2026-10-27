@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using VContainer;
 
 namespace CloudeDev.Game.Player.Service
@@ -11,6 +10,7 @@ namespace CloudeDev.Game.Player.Service
         private PlayerStatsModel _playerStats;
 
         public int Health => _playerStats.Health;
+        private bool _isDead;
 
         [Inject]
         public void Construct(PlayerStatsModel playerStats)
@@ -20,30 +20,23 @@ namespace CloudeDev.Game.Player.Service
 
         public void Heal(int amount)
         {
-            if(amount + _playerStats.Health  < _playerStats.MaxHealth)
-            {
-                var currentHeal = _playerStats.Health + amount;
-                _playerStats.ChangeStats(currentHeal, StatsPlayer.Health);
-            }
-            else
-            {
-                _playerStats.ChangeStats(_playerStats.MaxHealth, StatsPlayer.Health);
-            }
+            if (_isDead) return;
+            if (amount <= 0) return;
+            _playerStats.ChangeStats(amount, StatsPlayer.Health);
         }
 
         public void TakeDamage(int damage)
         {
-              
-            if (damage >= _playerStats.Health)
+            if (_isDead || damage <= 0) return;
+
+            _playerStats.ChangeStats(-damage, StatsPlayer.Health);   
+
+            if (_playerStats.Health <= 0)
             {
-                _playerStats.GetDamage(damage);
-                OnPlayerDied.Invoke();
-            }
-            else if(damage < _playerStats.Health)
-            {
-                Debug.Log(Health);
-                _playerStats.GetDamage(damage);
+                _isDead = true;
+                OnPlayerDied?.Invoke();
             }
         }
     }
 }
+

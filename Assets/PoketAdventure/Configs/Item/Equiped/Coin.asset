@@ -17,8 +17,6 @@ MonoBehaviour:
   itemType: 1
   objectItemEquiped: {fileID: 0}
   maxStackSize: 250
-  itemAddValue: 0
+  itemAddValue: 1
   isEquipingItem: 0
-  modifiers:
-  - stat: 7
-    value: 1
+  modifiers: []

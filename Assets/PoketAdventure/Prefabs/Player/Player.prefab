@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 6331256804777217870}
   - component: {fileID: 6400040953499652740}
   - component: {fileID: 2538704453150927207}
-  - component: {fileID: 4545779146111042516}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -213,27 +212,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 2.74}
   m_EdgeRadius: 0
---- !u!114 &4545779146111042516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038390957601228849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba03909118b6bd4b9afd1b92fab9fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Player.PlayerStats
-  level: 1
-  health: 100
-  maxHealth: 100
-  armor: 0
-  maxArmor: 100
-  strength: 5
-  dexterity: 5
-  coin: 0
-  speed: 5
 --- !u!1 &4180703544321356225
 GameObject:
   m_ObjectHideFlags: 0

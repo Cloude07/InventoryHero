@@ -17,7 +17,7 @@ MonoBehaviour:
   itemType: 4
   objectItemEquiped: {fileID: 6829827141242910200, guid: f9a960af340afd9488c05c4d5b0c1e6f, type: 3}
   maxStackSize: 1
-  itemAddValue: 0
+  itemAddValue: 24
   isEquipingItem: 1
   modifiers:
   - stat: 5

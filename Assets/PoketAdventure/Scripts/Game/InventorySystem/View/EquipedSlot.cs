@@ -2,6 +2,7 @@ using CloudeDev.Game.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VContainer;
 
 namespace CloudeDev.Game.Inventory
 {
@@ -15,7 +16,7 @@ namespace CloudeDev.Game.Inventory
         [SerializeField] private EquipedType type;
         [SerializeField] private Image iconImage;
         [SerializeField] private GameObject selectView;
-        [SerializeField] private PlayerStats playerStats; // ← назначить в инспекторе
+        private IPlayerStatsModifier playerStats;
         [SerializeField] private Transform equipParent;   // ← куда спавнить визуал (рука/тело)
 
         private bool hovering;
@@ -31,6 +32,12 @@ namespace CloudeDev.Game.Inventory
                 statsApplied = true;
             }
             UpdateSlot();
+        }
+
+        [Inject]
+        private void Construct(IPlayerStatsModifier stats)
+        {
+            playerStats = stats;
         }
 
         public void OnPointerExit(PointerEventData eventData)
