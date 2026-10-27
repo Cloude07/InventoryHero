@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Boots
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  Type: 8
-  _icon: {fileID: 0}
-  _name: Boots
-  _description: 'its boots armor '
-  _count: 1
-  _isEquipingItem: 1
+  nameItem: 
+  icon: {fileID: -1814139012690985970, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
+  itemType: 9
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 1
+  itemAddValue: 0
+  isEquipingItem: 1
+  modifiers:
+  - stat: 6
+    value: 24

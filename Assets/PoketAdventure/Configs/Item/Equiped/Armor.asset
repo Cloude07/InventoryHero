@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  Type: 2
-  _icon: {fileID: 21300000, guid: 1e23f0a0a11232f4ebbc0625c78b9306, type: 3}
-  _name: Iron Armor
-  _description: 'its good armor '
-  _count: 1
-  _isEquipingItem: 1
+  nameItem: 
+  icon: {fileID: -7345978181991845724, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
+  itemType: 3
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 1
+  itemAddValue: 0
+  isEquipingItem: 1
+  modifiers:
+  - stat: 3
+    value: 10

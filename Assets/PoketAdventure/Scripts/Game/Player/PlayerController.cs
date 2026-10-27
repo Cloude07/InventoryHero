@@ -64,7 +64,6 @@ namespace CloudeDev.Game.Player
         private void Update()
         {
             _playerStateMachine?.Update();
-            Debug.Log(Health);
         }
 
         public void Win()

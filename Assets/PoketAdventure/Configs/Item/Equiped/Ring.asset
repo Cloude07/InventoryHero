@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Ring
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  Type: 4
-  _icon: {fileID: 0}
-  _name: Ring
-  _description: 'its ring armor '
-  _count: 1
-  _isEquipingItem: 1
+  nameItem: 
+  icon: {fileID: 8808591696831724770, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
+  itemType: 5
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 1
+  itemAddValue: 0
+  isEquipingItem: 1
+  modifiers:
+  - stat: 8
+    value: 23

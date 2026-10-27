@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace CloudeDev.Game.Inventory
 {
     public class Slot : MonoBehaviour, ISlot, IPointerEnterHandler, IPointerExitHandler
-    {  
+    {
         public ItemConfig itemConfig;
         public int itemAmount;
         [SerializeField]
@@ -55,7 +55,7 @@ namespace CloudeDev.Game.Inventory
         public int AddItemAmount(int value, ItemConfig item)
         {
             if (item.nameItem == itemConfig.nameItem &&
-                value <= itemConfig.maxStackSize)
+                itemAmount + value <= itemConfig.maxStackSize)  
             {
                 itemAmount += value;
                 UpdateSlot();
@@ -98,12 +98,13 @@ namespace CloudeDev.Game.Inventory
             {
                 IconImage.enabled = true;
                 IconImage.sprite = itemConfig.icon;
-                textAmount.text = itemAmount.ToString();
+
+                textAmount.text = itemAmount > 1 ? itemAmount.ToString() : string.Empty;
             }
             else
             {
                 IconImage.enabled = false;
-                textAmount.text = "";
+                textAmount.text = string.Empty;
             }
         }
 

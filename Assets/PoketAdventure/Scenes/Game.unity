@@ -577,52 +577,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2038390957601228849, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
   m_PrefabInstance: {fileID: 1888213722}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &460306400
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!114 &460306403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4545779146111042516, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
+  m_PrefabInstance: {fileID: 1888213722}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460306396}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -1.26, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 2.74}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba03909118b6bd4b9afd1b92fab9fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Player.PlayerStats
 --- !u!1 &460329396
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +791,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1172,15 +1137,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentVersion: 2
+  m_ComponentVersion: 4
   m_LightType: 4
   m_BlendStyleIndex: 0
+  m_Light2DProvider:
+    rid: -2
+  m_SelectionSources:
+    rid: 2889982270170464336
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000i
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1195,6 +1164,9 @@ MonoBehaviour:
   m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -1212,6 +1184,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2889982270170464336
+      type: {class: Light2DProviderSources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_SelectedHashCode: 4
+        m_SelectedSource:
+          rid: -2
+        m_Provider2DCache:
+          rid: -2
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -1505,7 +1490,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1717,7 +1702,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1950,7 +1935,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2358,7 +2343,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2590,7 +2575,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1203550821}
   - component: {fileID: 1203550820}
-  - component: {fileID: 1203550822}
   m_Layer: 0
   m_Name: GameScope
   m_TagString: Untagged
@@ -2635,23 +2619,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1203550822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203550819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a130a555a0616804680b971fbae31938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.TestManagerInventory
-  itemSlot: []
-  itemConfig: []
-  _itemName: 
-  _quantity: 0
-  _sprite: {fileID: 0}
 --- !u!1 &1313892212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,7 +2876,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3422,7 +3389,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3464,38 +3431,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2340609029818087069, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2624523996421833874, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4700730647892609431, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5255506310561471552, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5673867028920324938, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253775365263497211, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 6391643672635336513, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6481322619949474586, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.31
-      objectReference: {fileID: 0}
     - target: {fileID: 7582348084932772378, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.48
@@ -3536,21 +3471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7833990692536916719, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178736731031516122, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2038390957601228849, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 460306400}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7db23b58318e7144b4f7b79b229bfcc, type: 3}
 --- !u!1 &1959887408
 GameObject:
@@ -3734,7 +3658,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3871,7 +3795,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4605,7 +4529,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6365,6 +6289,7 @@ GameObject:
   - component: {fileID: 6063884264349703802}
   - component: {fileID: 4819627344285585316}
   - component: {fileID: 3473322625650383837}
+  - component: {fileID: 6063884264349703803}
   m_Layer: 5
   m_Name: EquipedArrmor
   m_TagString: Untagged
@@ -6383,6 +6308,7 @@ GameObject:
   - component: {fileID: 6063884263444336882}
   - component: {fileID: 4819627345057775916}
   - component: {fileID: 3473322626959316309}
+  - component: {fileID: 6063884263444336883}
   m_Layer: 5
   m_Name: EquipedRing
   m_TagString: Untagged
@@ -6401,6 +6327,7 @@ GameObject:
   - component: {fileID: 6063884263452984327}
   - component: {fileID: 4819627344999323097}
   - component: {fileID: 3473322626949087648}
+  - component: {fileID: 6063884263452984328}
   m_Layer: 5
   m_Name: EqupedHelm
   m_TagString: Untagged
@@ -6419,6 +6346,7 @@ GameObject:
   - component: {fileID: 6063884263322535591}
   - component: {fileID: 4819627344860288889}
   - component: {fileID: 3473322626820670208}
+  - component: {fileID: 6063884263322535592}
   m_Layer: 5
   m_Name: EquipedSheeld
   m_TagString: Untagged
@@ -6437,6 +6365,7 @@ GameObject:
   - component: {fileID: 6063884263978029077}
   - component: {fileID: 4819627344509403595}
   - component: {fileID: 3473322627507885490}
+  - component: {fileID: 6063884263978029078}
   m_Layer: 5
   m_Name: EquipedBoots
   m_TagString: Untagged
@@ -6455,6 +6384,7 @@ GameObject:
   - component: {fileID: 6063884264040845855}
   - component: {fileID: 4819627344580805569}
   - component: {fileID: 3473322627570767800}
+  - component: {fileID: 6063884264040845856}
   m_Layer: 5
   m_Name: EquipedSword
   m_TagString: Untagged
@@ -6472,6 +6402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6063884263582649984}
   - component: {fileID: 4819627344651034462}
+  - component: {fileID: 6063884263582649985}
   - component: {fileID: 3473322627097824039}
   m_Layer: 5
   m_Name: EquipedAmulet
@@ -6558,7 +6489,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6693,7 +6624,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6736,6 +6667,25 @@ RectTransform:
   m_AnchoredPosition: {x: 27.75, y: -10}
   m_SizeDelta: {x: -108.9, y: -17.13}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6063884263322535592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256663371091626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 3
+  iconImage: {fileID: 8048132399737348492}
+  selectView: {fileID: 2734346856490508958}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884263444336882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6757,6 +6707,25 @@ RectTransform:
   m_AnchoredPosition: {x: 27.75, y: -26.63501}
   m_SizeDelta: {x: -108.9, y: -26.635}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6063884263444336883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256663191034111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 2
+  iconImage: {fileID: 8048132399817406425}
+  selectView: {fileID: 2734346856629220555}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884263452984327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6778,6 +6747,25 @@ RectTransform:
   m_AnchoredPosition: {x: -29.25, y: 133.72}
   m_SizeDelta: {x: -553.31, y: -320.71}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6063884263452984328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256663233235978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 1
+  iconImage: {fileID: 8048132399876383532}
+  selectView: {fileID: 2734346856620040254}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884263582649984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6799,6 +6787,25 @@ RectTransform:
   m_AnchoredPosition: {x: -232.98999, y: 133.72}
   m_SizeDelta: {x: -570.05, y: -320.71}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6063884263582649985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256664134911629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 0
+  iconImage: {fileID: 8048132399947524523}
+  selectView: {fileID: 2734346856767531705}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884263978029077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6820,6 +6827,25 @@ RectTransform:
   m_AnchoredPosition: {x: 33.063995, y: 8.119995}
   m_SizeDelta: {x: -74.04, y: -4.53}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6063884263978029078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256663724857368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 6
+  iconImage: {fileID: 8048132400359552830}
+  selectView: {fileID: 2734346857177461804}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884264040845855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6841,6 +6867,25 @@ RectTransform:
   m_AnchoredPosition: {x: 52.035004, y: -6.949997}
   m_SizeDelta: {x: -89.399, y: -23.34}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6063884264040845856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256663787805202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 5
+  iconImage: {fileID: 8048132400296736052}
+  selectView: {fileID: 2734346857240409638}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!224 &6063884264349703802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6862,6 +6907,25 @@ RectTransform:
   m_AnchoredPosition: {x: 26.056, y: -10}
   m_SizeDelta: {x: -82.269, y: -24.27}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6063884264349703803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626256662485948023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47357e2656fa2f4baf5d54ea096d8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.EquipedSlot
+  itemConfig: {fileID: 0}
+  itemAmount: 0
+  type: 4
+  iconImage: {fileID: 8048132398441232721}
+  selectView: {fileID: 2734346857468426819}
+  playerStats: {fileID: 460306403}
+  equipParent: {fileID: 0}
 --- !u!1 &6094749833078979644
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,7 +7174,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7502,7 +7566,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7602,7 +7666,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7751,7 +7815,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7897,7 +7961,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -8293,11 +8357,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cbb7a1dc18d0f43b690619f10744ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Inventory
-  HealthItem: {fileID: 11400000, guid: 031976f3ed8816e44a7968fa22a18eaa, type: 2}
-  SwordItem: {fileID: 11400000, guid: 3750b9963c5de9a46be4d58c65bf41ed, type: 2}
-  inventoryObject: {fileID: 7103784680542381758}
-  inventoryEquipedObject: {fileID: 0}
+  ItemConfig1: {fileID: 11400000, guid: 3a34505d3e3e673498c09aa70001360d, type: 2}
+  ItemConfig2: {fileID: 11400000, guid: 296d450d3537d524f831eb587c624e79, type: 2}
+  ItemConfig3: {fileID: 11400000, guid: b0b7c708361ac674bb0a8580a833e4e5, type: 2}
+  ItemConfig4: {fileID: 11400000, guid: 12b12b548edda3146a70ff48ba03107b, type: 2}
+  ItemConfig5: {fileID: 11400000, guid: cd521bd9ac29b184cb65390282752304, type: 2}
+  ItemConfig6: {fileID: 11400000, guid: 031976f3ed8816e44a7968fa22a18eaa, type: 2}
+  ItemConfig7: {fileID: 11400000, guid: 227dbc2383faa54459b3e06c1402d5fd, type: 2}
+  ItemConfig8: {fileID: 11400000, guid: 8e7b75f9e4597104d9d84e8517afa0c2, type: 2}
+  ItemConfig9: {fileID: 11400000, guid: 3750b9963c5de9a46be4d58c65bf41ed, type: 2}
+  inventoryObject: {fileID: 1709973968}
+  inventoryEquipedObject: {fileID: 3924338947610119399}
   dragItemIcon: {fileID: 1558715127}
+  playerStats: {fileID: 460306403}
 --- !u!222 &8340312540150608846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8420,7 +8492,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

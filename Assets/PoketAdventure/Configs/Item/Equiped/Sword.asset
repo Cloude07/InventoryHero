@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
   nameItem: Sword
   icon: {fileID: 21300000, guid: 9eed90b7fb2f9154a903243198e2e297, type: 3}
-  itemType: 2
-  equipedType: 2
-  objectItemEquiped: {fileID: 0}
+  itemType: 4
+  objectItemEquiped: {fileID: 6829827141242910200, guid: f9a960af340afd9488c05c4d5b0c1e6f, type: 3}
   maxStackSize: 1
+  itemAddValue: 0
   isEquipingItem: 1
+  modifiers:
+  - stat: 5
+    value: 15

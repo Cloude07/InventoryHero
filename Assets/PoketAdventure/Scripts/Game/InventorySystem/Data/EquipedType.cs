@@ -2,13 +2,12 @@
 {
     public enum EquipedType
     {
-        None,
-        ArmorType,
-        SwordType,
-        RingType,
-        HelmetType,
-        ChainType,
-        SheeldType,
-        BootsType
+        Amulet,
+        Helm,
+        Ring,
+        Sheeld,
+        Armor,
+        Sword,
+        Boots
     }
 }

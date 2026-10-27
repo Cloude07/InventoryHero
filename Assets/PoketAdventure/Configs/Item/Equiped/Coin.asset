@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  Type: 1
-  _icon: {fileID: 0}
-  _name: Coin
-  _description: its coin
-  _count: 1
-  _isEquipingItem: 0
+  nameItem: 
+  icon: {fileID: -3943828925128700860, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
+  itemType: 1
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 250
+  itemAddValue: 0
+  isEquipingItem: 0
+  modifiers:
+  - stat: 7
+    value: 1

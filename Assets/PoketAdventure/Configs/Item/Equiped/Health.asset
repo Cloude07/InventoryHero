@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.ItemConfig
   nameItem: Health
   icon: {fileID: 1018383391595562092, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
-  itemType: 1
-  equipedType: 0
+  itemType: 2
   objectItemEquiped: {fileID: 0}
   maxStackSize: 35
+  itemAddValue: 0
   isEquipingItem: 0
+  modifiers:
+  - stat: 1
+    value: 12

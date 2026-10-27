@@ -1,9 +1,16 @@
 ﻿namespace CloudeDev.Game.Inventory
 {
     public enum ItemType
-        {
-            Coin,
-            HealthPoint,
-            EquipedItem
-        }
+    {
+        None,
+        Coin,
+        HealthPoint,
+        ArmorType,
+        SwordType,
+        RingType,
+        HelmetType,
+        AmuletType,
+        SheeldType,
+        BootsType
+    }
 }
