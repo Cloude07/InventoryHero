@@ -37,5 +37,27 @@ namespace CloudeDev.Game.Combat
             yield return AnimatorUtils.WaitForState(animator, "Fight");      
             view.PlayAnimation("Idle");                                    
         }
+
+        public IEnumerator PlayBlockAnimation()
+        {
+            var view = _resolver.Resolve<IPlayerView>();
+            var animator = view.Animator;
+
+            view.PlayAnimation("Block");
+            yield return AnimatorUtils.WaitForState(animator, "Block");
+            view.PlayAnimation("Idle");
+        }
+
+        public IEnumerator PlayHitAnimation()
+        {
+            if (IsDead) yield break;   // ← добавить первой строкой
+
+            var view = _resolver.Resolve<IPlayerView>();
+            var animator = view.Animator;
+
+            view.PlayAnimation("Hit");
+            yield return AnimatorUtils.WaitForState(animator, "Hit");
+            view.PlayAnimation("Idle");
+        }
     }
 }

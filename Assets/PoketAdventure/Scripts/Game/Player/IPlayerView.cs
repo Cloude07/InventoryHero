@@ -14,6 +14,7 @@ namespace CloudeDev.Game.Player
         void IsFight();
         void Win();
         void Lose();
+        void SetRunningFlag(bool value);
         Animator Animator { get; }
 
     }

@@ -20,6 +20,7 @@ namespace CloudeDev.Game.Ui
         [SerializeField] private EnemyPool _enemyPool;
         [SerializeField] private TMP_Text _combatLog;
         [SerializeField] private TurnBasedCombatController _combat;
+        [SerializeField] private BackgroundScroll backgroundScroll;
 
         [Inject]
         private void Construct(IPlayerStatsReadonly playerStatsReadonly, IPlayerView playerView)
@@ -64,7 +65,8 @@ namespace CloudeDev.Game.Ui
         private void RefreshAllStats()
         {
             if (_playerStats == null) return;
-            _statsDisplayUI.ChangeTextHeath(_playerStats.Health.ToString());
+            _statsDisplayUI.ChangeTextMaxHeath(_playerStats.MaxHealth.ToString());
+            _statsDisplayUI.ChangeTextHeath(_playerStats.Health.ToString(), _playerStats.MaxHealth.ToString());
             _statsDisplayUI.ChangeTextArmor(_playerStats.Armor.ToString());
             _statsDisplayUI.ChangeTextStrength(_playerStats.Strength.ToString());
             _statsDisplayUI.ChangeTextDexterity(_playerStats.Dexterity.ToString());
@@ -79,11 +81,13 @@ namespace CloudeDev.Game.Ui
             switch (stats)
             {
                 case StatsPlayer.Health:
-                    _statsDisplayUI.ChangeSliderHealth(newValue, _playerStats.MaxHealth); 
+                    _statsDisplayUI.ChangeSliderHealth(newValue, _playerStats.MaxHealth);
+                    _statsDisplayUI.ChangeTextHeath(newValue.ToString(), _playerStats.MaxHealth.ToString());
                     break;
                 case StatsPlayer.MaxHealth:
                     _statsDisplayUI.ChangeSliderHealth(_playerStats.Health, newValue);
-                    _statsDisplayUI.ChangeTextHeath(newValue.ToString());
+                    _statsDisplayUI.ChangeTextMaxHeath(newValue.ToString());
+                    _statsDisplayUI.ChangeTextHeath(_playerStats.Health.ToString(), _playerStats.MaxHealth.ToString());
                     break;
                 case StatsPlayer.Dexterity:
                     _statsDisplayUI.ChangeTextDexterity(newValue.ToString());
@@ -108,6 +112,7 @@ namespace CloudeDev.Game.Ui
             _statsDisplayUI.NextWaveIsActive(false);
             _playerView.IsRunning();
             _enemyPool.SpawnNextEnemy();
+            backgroundScroll.enabled = true;
         }
 
         public void OnClickVisible() => _nextButton.gameObject.SetActive(true);

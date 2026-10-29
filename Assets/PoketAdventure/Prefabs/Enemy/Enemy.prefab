@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _animator: {fileID: 3204940618835449546}
   _PosDamage: {fileID: 6659027846419582689}
+  _sprite: {fileID: 1200841092279491013}
   _distance: 1
   _heath: 1
   _damage: 0

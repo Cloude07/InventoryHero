@@ -7,7 +7,6 @@ namespace CloudeDev.Game.Player.State
 {
     public class RunningState : PlayerStateBase
     {
-        private Animator _animator;
 
         public RunningState(IPlayerStats statsModel, IStateSwitcher stateSwitcher, IPlayerView playerView)
         : base(statsModel, stateSwitcher, playerView) 
@@ -16,13 +15,13 @@ namespace CloudeDev.Game.Player.State
 
         public override void Enter()
         {
-
+            _playerView.SetRunningFlag(true);      // ← страховка
+            _playerView.PlayAnimation("Running");
         }
 
         public override void Update()
         {
             if (_playerView == null) return;
-            // �������� ������
             MovePlayer();
             TryFindEnemy();
         }
@@ -44,15 +43,13 @@ namespace CloudeDev.Game.Player.State
 
         private void MovePlayer()
         {
-          
             Vector2 movement = Vector2.right * _statsModel.Speed * Time.deltaTime;
-            _playerView.PlayAnimation("Running");
             _playerView.PlayerTransform.Translate(movement);
         }
 
         public override void Exit()
         {
-            _playerView.IsFight();
+            _playerView.SetRunningFlag(false);     // ← вместо IsFight()
         }
     }
 }

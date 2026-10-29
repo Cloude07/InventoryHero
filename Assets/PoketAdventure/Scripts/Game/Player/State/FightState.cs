@@ -28,14 +28,14 @@ namespace CloudeDev.Game.Player.State
 
             if (hit.collider == null || !hit.collider.CompareTag("Enemy"))
             {
-                _stateSwitcher.SwitchState<IdleState>();
+                _playerView.IsRunning();  
                 return;
             }
 
             var enemy = hit.collider.GetComponent<EnemyController>();
             if (enemy == null || enemy.IsDead)
             {
-                _stateSwitcher.SwitchState<RunningState>();   // ← было IdleState
+                _playerView.IsRunning();   
                 return;
             }
 
@@ -46,10 +46,8 @@ namespace CloudeDev.Game.Player.State
 
         public override void Update()
         {
-            // Всё делает контроллер — здесь только страховка на случай,
-            // если враг умер или убежал вне боя
             if (!_started && !_combat.IsActive)
-                _stateSwitcher.SwitchState<RunningState>();
+                _playerView.IsRunning();   // ← было SwitchState<RunningState>()
         }
 
         public override void Exit()
@@ -60,10 +58,8 @@ namespace CloudeDev.Game.Player.State
 
         private void HandleCombatEnded()
         {
-            // Если игрок умер — DeadState уже переключён через OnPlayerDied.
             if (_playerView.Health <= 0) return;
-
-            _stateSwitcher.SwitchState<RunningState>();
+            _playerView.IsRunning();       // ← было SwitchState<RunningState>()
         }
     }
 }

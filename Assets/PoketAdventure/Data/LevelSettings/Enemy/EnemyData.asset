@@ -17,5 +17,5 @@ MonoBehaviour:
   damage: 2
   health: 15
   defense: 0
-  blockChance: 4
+  blockChance: 55
   distance: 1

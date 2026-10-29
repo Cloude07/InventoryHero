@@ -26,5 +26,21 @@ namespace CloudeDev.Game.Combat
             yield return AnimatorUtils.WaitForState(_enemy.Animator, "Attack");    
             _enemy.StopAttackAnimation();
         }
+
+        public IEnumerator PlayBlockAnimation()
+        {
+            _enemy.PlayBlockAnimation();
+            yield return AnimatorUtils.WaitForState(_enemy.Animator, "Block");
+            _enemy.StopBlockAnimation();
+        }
+
+        public IEnumerator PlayHitAnimation()
+        {
+            if (_enemy.IsDead) yield break;        // труп не дёргается
+
+            _enemy.PlayHitAnimation();
+            yield return AnimatorUtils.WaitForState(_enemy.Animator, "Hit");
+            _enemy.StopHitAnimation();
+        }
     }
 }

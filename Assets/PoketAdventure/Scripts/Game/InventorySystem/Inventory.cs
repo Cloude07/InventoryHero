@@ -43,7 +43,6 @@ namespace CloudeDev.Game.Inventory
             allSlots.AddRange(inventorySlots);
             allSlots.AddRange(inventoryEquipedSlots);
 
-            Debug.Log($"[Inventory] inventory={inventorySlots.Count}, equipped={inventoryEquipedSlots.Count}");
         }
 
         [Inject]

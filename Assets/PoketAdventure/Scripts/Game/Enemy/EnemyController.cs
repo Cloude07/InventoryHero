@@ -2,6 +2,7 @@ using UnityEngine;
 using CloudeDev.Game.Enemy.State;
 using CloudeDev.Game.Enemy.Pool;
 using UnityEngine.UI;
+using System;
 
 namespace CloudeDev.Game.Enemy
 {
@@ -9,6 +10,7 @@ namespace CloudeDev.Game.Enemy
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _PosDamage;
+        [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private float _distance;
         [SerializeField] private float _heath;
         [SerializeField] private int _damage;
@@ -40,16 +42,12 @@ namespace CloudeDev.Game.Enemy
             if (_healthBar != null)
                 _healthBar.SetHealth(_heath, _maxHeath);
 
-            if (_heath <= 0)                      
+            if (_heath <= 0)
             {
                 _heath = 0;
                 _isDead = true;
                 if (_healthBar != null) _healthBar.Hide();
                 _StateMachine?.SwitchState<DeadEnemyState>();
-            }
-            else
-            {
-                _animator.SetBool("Hit", true);
             }
         }
 
@@ -93,5 +91,38 @@ namespace CloudeDev.Game.Enemy
         }
 
         public void StopAttackAnimation() { }   // ← Trigger сам сбрасывается, ничего не делаем
+
+        public void PlayBlockAnimation()
+        {
+            if (_animator == null || _isDead) return;
+            _animator.SetTrigger("Block");   // ← вместо SetBool
+        }
+
+
+        public void PlayHitAnimation()
+        {
+            if (_animator == null || _isDead) return;
+            _animator.SetTrigger("Hit");
+
+            if (_sprite != null)
+                StartCoroutine(FlashRed());
+        }
+        private System.Collections.IEnumerator FlashRed()
+        {
+            var original = _sprite.color;
+            _sprite.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            _sprite.color = original;
+        }
+
+        public void StopHitAnimation()
+        {
+            
+        }
+
+        internal void StopBlockAnimation()
+        {
+            
+        }
     }
 }

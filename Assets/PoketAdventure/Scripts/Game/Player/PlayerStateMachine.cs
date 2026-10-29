@@ -30,7 +30,8 @@ namespace CloudeDev.Game.Player
             new IdleState(_statsModel, this, _playerView),
             new RunningState(_statsModel, this, _playerView),
             new FightState(_statsModel, this, _playerView, _combat),
-            new DeadState(_statsModel, this, _playerView)
+            new DeadState(_statsModel, this, _playerView),
+            new BlockState(_statsModel,this, _playerView, _combat),
         };
             _currentState = _states[0];
             _currentState.Enter();

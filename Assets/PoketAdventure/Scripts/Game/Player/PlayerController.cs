@@ -36,6 +36,8 @@ namespace CloudeDev.Game.Player
 
         }
 
+        public void SetRunningFlag(bool value) => _isRunn = value;
+
         private void _playerHealth_OnPlayerDied()
         {
             _playerStateMachine.SwitchState<DeadState>();
@@ -43,8 +45,9 @@ namespace CloudeDev.Game.Player
 
         public void IsRunning()
         {
+            _isRunn = true;
             _playerStateMachine.SwitchState<RunningState>();
-            _isRunn=true;
+         
         }
 
         public void IsFight()
@@ -72,6 +75,8 @@ namespace CloudeDev.Game.Player
             if (_playerHealth != null)
                 _playerHealth.OnPlayerDied -= _playerHealth_OnPlayerDied;
         }
+
+
 
         public void Lose()
         {

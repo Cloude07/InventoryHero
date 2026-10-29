@@ -9,6 +9,7 @@ namespace CloudeDev.UI
     public class StatsDisplayUI
     {
         [Header("Stats")]
+        [SerializeField] private TMP_Text _maxHealthText;
         [SerializeField] private TMP_Text _healthText;
         [SerializeField] private TMP_Text _armorText;
         [SerializeField] private TMP_Text _damageText;
@@ -22,8 +23,10 @@ namespace CloudeDev.UI
         [Header("Interactive")]
         [SerializeField] private Button _nextButton;
    
-        public void ChangeTextHeath(string value) =>
-            _healthText.SetText($"Heal: {value}");
+        public void ChangeTextMaxHeath(string value) =>
+            _maxHealthText.SetText($"Heal: {value}");
+        public void ChangeTextHeath(string value1, string value2) =>
+    _healthText.SetText($"{value1}/{value2}");
 
         public void ChangeTextArmor(string value) =>
             _armorText.SetText($"Arm: {value}");

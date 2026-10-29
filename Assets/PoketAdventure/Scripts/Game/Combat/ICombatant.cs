@@ -11,6 +11,8 @@ namespace CloudeDev.Game.Combat
         int BlockChance { get; }
         void ApplyDamage(int amount);
 
-        IEnumerator PlayAttackAnimation(); 
+        IEnumerator PlayAttackAnimation();
+        IEnumerator PlayBlockAnimation();
+        IEnumerator PlayHitAnimation();
     }
 }
