@@ -18,6 +18,7 @@ namespace CloudeDev.Game.Player
         int Dexterity { get; }
         int Coin { get; }
         int Speed { get; }
+        int Luck { get; }
         event Action<StatsPlayer, int> OnStatsChanged;
     }
 

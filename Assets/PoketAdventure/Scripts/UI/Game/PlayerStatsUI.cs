@@ -1,6 +1,8 @@
+using CloudeDev.Game.Combat;
 using CloudeDev.Game.Enemy.Pool;
 using CloudeDev.Game.Player;
 using CloudeDev.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -16,6 +18,8 @@ namespace CloudeDev.Game.Ui
         [SerializeField] private StatsDisplayUI _statsDisplayUI;
         [SerializeField] private Button _nextButton;
         [SerializeField] private EnemyPool _enemyPool;
+        [SerializeField] private TMP_Text _combatLog;
+        [SerializeField] private TurnBasedCombatController _combat;
 
         [Inject]
         private void Construct(IPlayerStatsReadonly playerStatsReadonly, IPlayerView playerView)
@@ -25,7 +29,12 @@ namespace CloudeDev.Game.Ui
             Subscribe();
         }
 
-        private void OnEnable() => Subscribe();
+        private void OnEnable()
+        {
+            Subscribe();
+            if (_combat != null)
+                _combat.OnCombatLog += msg => _combatLog.SetText(msg);
+        }
         private void OnDisable() => Unsubscribe();
 
         private void Start()

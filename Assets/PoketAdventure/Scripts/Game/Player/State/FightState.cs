@@ -1,4 +1,5 @@
-﻿using CloudeDev.Game.Enemy;
+﻿using CloudeDev.Game.Combat;
+using CloudeDev.Game.Enemy;
 using CloudeDev.Game.StateMachine;
 using UnityEngine;
 
@@ -6,57 +7,63 @@ namespace CloudeDev.Game.Player.State
 {
     public class FightState : PlayerStateBase
     {
-        private float _attackInterval = 0.5f;   // интервал между ударами
-        private float _nextAttackTime;
+        private readonly TurnBasedCombatController _combat;
+        private bool _started;
 
-        private EnemyController _currentEnemy;
-
-        public FightState( IPlayerStats statsModel,IStateSwitcher stateSwitcher, IPlayerView playerView)
-            : base(statsModel, stateSwitcher, playerView) { }
+        public FightState(IPlayerStats statsModel, IStateSwitcher stateSwitcher,
+            IPlayerView playerView, TurnBasedCombatController combat)
+            : base(statsModel, stateSwitcher, playerView)
+        {
+            _combat = combat;
+        }
 
         public override void Enter()
         {
-            // Ищем врага один раз при входе
+            _started = false;
+
             var hit = Physics2D.Raycast(
                 _playerView.DamagePoint.position,
                 Vector2.right,
-                _playerView.DetectionDistance
-            );
+                _playerView.DetectionDistance);
 
-            if (hit.collider != null && hit.collider.CompareTag("Enemy"))
-                _currentEnemy = hit.collider.GetComponent<EnemyController>();
-
-           
-
-
-            if (_currentEnemy == null)
+            if (hit.collider == null || !hit.collider.CompareTag("Enemy"))
             {
                 _stateSwitcher.SwitchState<IdleState>();
                 return;
             }
 
-            _nextAttackTime = Time.time + _attackInterval;
-        }
+            var enemy = hit.collider.GetComponent<EnemyController>();
+            if (enemy == null || enemy.IsDead)
+            {
+                _stateSwitcher.SwitchState<RunningState>();   // ← было IdleState
+                return;
+            }
 
-        public override void Exit()
-        {
-            _currentEnemy = null;
+            _combat.OnCombatEnded += HandleCombatEnded;
+            _combat.StartCombat(new EnemyCombatant(enemy));
+            _started = true;
         }
 
         public override void Update()
         {
-            if (_currentEnemy == null || _currentEnemy.IsDead)
-            {
+            // Всё делает контроллер — здесь только страховка на случай,
+            // если враг умер или убежал вне боя
+            if (!_started && !_combat.IsActive)
                 _stateSwitcher.SwitchState<RunningState>();
-                return;
-            }
+        }
 
-            if (Time.time >= _nextAttackTime)
-            {
-                _currentEnemy.Damage(_statsModel.Strength);
-                _nextAttackTime = Time.time + _attackInterval;
-                _playerView.PlayAnimation("Fight");
-            }
+        public override void Exit()
+        {
+            _combat.OnCombatEnded -= HandleCombatEnded;
+            _playerView.PlayAnimation("Idle"); 
+        }
+
+        private void HandleCombatEnded()
+        {
+            // Если игрок умер — DeadState уже переключён через OnPlayerDied.
+            if (_playerView.Health <= 0) return;
+
+            _stateSwitcher.SwitchState<RunningState>();
         }
     }
 }

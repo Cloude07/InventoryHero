@@ -1,11 +1,15 @@
 ﻿using CloudeDev.Boot.SaveSystema;
+using CloudeDev.Game.Combat;   // ← для TurnBasedCombatController
 
 namespace CloudeDev.Game.Player.Factories
 {
     public interface IPlayerFactory
     {
+        PlayerStatsModel CreateFromSave(SaveLoaderManager saveLoader);
         PlayerStatsModel CreateNewGameStats();
-        PlayerStatsModel CreateFromSave(SaveLoaderManager saveData);
-        PlayerStateMachine CreateStateMachine(IPlayerStats stats);
+
+        PlayerStateMachine CreateStateMachine(
+            IPlayerStats stats,
+            TurnBasedCombatController combat);    // ← новый параметр
     }
 }

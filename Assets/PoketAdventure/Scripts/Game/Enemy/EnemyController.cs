@@ -6,34 +6,39 @@ namespace CloudeDev.Game.Enemy
 {
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField]
-        private Animator _animator;
-        [SerializeField]
-        private Transform _PosDamage;
-        [SerializeField]
-        private float _distance;
-        [SerializeField]
-        private float _heath;
-        [SerializeField]
-        private int _damage;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _PosDamage;
+        [SerializeField] private float _distance;
+        [SerializeField] private float _heath;
+        [SerializeField] private int _damage;
+        [SerializeField] private int _defense;
+        [SerializeField] private int _blockChance;
+        public int DamageAmount => _damage;         
+        public int Defense => _defense;
+        public int BlockChance => _blockChance;
+        public int HealthInt => (int)_heath;
+        public bool IsDead => _isDead;
+        public Animator Animator => _animator;
+
         private AttackType _attackType;
         private EnemyPool _pool;
         private EnemyStateMachine _StateMachine;
         private bool _isDead = false;
-        public bool IsDead => _isDead;
-        public float Health => _heath;
+
 
         public void Damage(float damage)
         {
-            if (_heath < damage)
+            if (_isDead) return;
+
+            _heath -= damage;                        
+            if (_heath <= 0)                      
             {
-                _StateMachine.SwitchState<DeadEnemyState>();
                 _heath = 0;
                 _isDead = true;
+                _StateMachine?.SwitchState<DeadEnemyState>();
             }
             else
             {
-                _heath -= damage;
                 _animator.SetBool("Hit", true);
             }
         }
@@ -44,10 +49,12 @@ namespace CloudeDev.Game.Enemy
             _damage = enemyData.damage;
             _attackType = enemyData.attackType;
             _distance = enemyData.distance;
+            _defense = enemyData.defense;
+            _blockChance = enemyData.blockChance;
             _pool = pool;
             _isDead = false;
 
-            _StateMachine = new EnemyStateMachine(_animator, _attackType, this._PosDamage, _distance, _damage);
+            _StateMachine = new EnemyStateMachine(this ,_animator, _attackType, this._PosDamage, _distance, _damage);
             _StateMachine.SwitchState<IdleEnemyState>();
         }
 
@@ -59,7 +66,16 @@ namespace CloudeDev.Game.Enemy
 
         public void Death()
         {
-            _pool.ReturnEnemy(this.gameObject);
+            Debug.Log($"[Enemy] Death called for {name}");
+            _pool.ReturnEnemy(gameObject);
         }
+
+        public void PlayAttackAnimation()
+        {
+            if (_animator == null || _isDead) return;
+            _animator.SetTrigger("Attack");   // ← вместо SetBool
+        }
+
+        public void StopAttackAnimation() { }   // ← Trigger сам сбрасывается, ничего не делаем
     }
 }

@@ -1,14 +1,14 @@
 using CloudeDev.Boot.SaveSystema;
+using CloudeDev.Game.Combat;
 
 namespace CloudeDev.Game.Player.Factories
 {
     public class DefaultPlayerFactory : IPlayerFactory
     {
-
-        public PlayerStatsModel CreateFromSave(SaveLoaderManager LoadData)
+        public PlayerStatsModel CreateFromSave(SaveLoaderManager saveLoader)
         {
-            //Load => PlayerStatsModel(Load.jsonData)
-                return new PlayerStatsModel(
+            // TODO: заменить на реальную загрузку из saveLoader.LoadData()
+            return new PlayerStatsModel(
                 level: 1,
                 health: 25,
                 maxHealth: 25,
@@ -17,14 +17,14 @@ namespace CloudeDev.Game.Player.Factories
                 strength: 2,
                 dexterity: 3,
                 coin: 0,
-                speed: 3
-                );
+                speed: 3,
+                luck: 10                                   // ← добавить
+            );
         }
 
         public PlayerStatsModel CreateNewGameStats()
         {
             return new PlayerStatsModel(
-
                 level: 1,
                 health: 25,
                 maxHealth: 25,
@@ -33,14 +33,16 @@ namespace CloudeDev.Game.Player.Factories
                 strength: 2,
                 dexterity: 3,
                 coin: 0,
-                speed: 4
-           );
+                speed: 4,
+                luck: 10                                   // ← добавить
+            );
         }
 
-        public PlayerStateMachine CreateStateMachine(IPlayerStats stats)
+        public PlayerStateMachine CreateStateMachine(
+            IPlayerStats stats,
+            TurnBasedCombatController combat)              // ← новый параметр
         {
-            return new PlayerStateMachine(stats);
+            return new PlayerStateMachine(stats, combat);
         }
     }
-
 }

@@ -12,15 +12,15 @@ namespace CloudeDev.Game.Enemy
         private List<IState> _states;
         private Animator _animator;
 
-        public EnemyStateMachine(Animator animator, AttackType attackType,Transform enemyTransform, float distance, int damage)
+        public EnemyStateMachine(EnemyController enemyController ,Animator animator, AttackType attackType,Transform enemyTransform, float distance, int damage)
         {
             _animator = animator;
 
             _states = new List<IState>()
             {
                 new IdleEnemyState(_animator, this, attackType, enemyTransform, distance),
-                new AttackEnemyState(_animator, attackType, enemyTransform, distance, damage),
-                new DeadEnemyState(_animator),
+                new AttackEnemyState(_animator, attackType, enemyTransform, distance, damage, this),
+                new DeadEnemyState(_animator, enemyController),
                 new BlockEnemyState(_animator)
             };
             _currentState = _states[0];

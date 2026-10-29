@@ -23,6 +23,7 @@ namespace CloudeDev.Game.Player
         public bool isRunn => _isRunn;
 
         public int Health => _playerHealth.Health;
+        public Animator Animator => _playerAnimator;
 
         [Inject]
         private void Construct(PlayerStateMachine playerStateMachine, IPlayerHealth playerHealth)

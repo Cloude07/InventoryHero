@@ -13,6 +13,7 @@ namespace CloudeDev.Game.Player
         void IsRunning();
         void IsFight();
         void Win();
+        Animator Animator { get; }
 
     }
 }

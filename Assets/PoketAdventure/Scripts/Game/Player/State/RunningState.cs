@@ -1,3 +1,4 @@
+using CloudeDev.Game.Enemy;
 using CloudeDev.Game.StateMachine;
 using UnityEngine;
 
@@ -21,18 +22,24 @@ namespace CloudeDev.Game.Player.State
         public override void Update()
         {
             if (_playerView == null) return;
-            // Движение игрока
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             MovePlayer();
             TryFindEnemy();
         }
 
         private void TryFindEnemy()
         {
-            // Поиск врага через DamagePoint
-            var hit = Physics2D.Raycast(_playerView.DamagePoint.position, Vector2.right, _playerView.DetectionDistance);
-            if (hit.collider?.CompareTag("Enemy") == true)
-                _stateSwitcher.SwitchState<FightState>();
+            var hit = Physics2D.Raycast(
+                _playerView.DamagePoint.position,
+                Vector2.right,
+                _playerView.DetectionDistance);
 
+            if (hit.collider?.CompareTag("Enemy") != true) return;
+
+            var enemy = hit.collider.GetComponent<EnemyController>();
+            if (enemy == null || enemy.IsDead) return;   // в†ђ РЅРµ РёРґС‘Рј РІ Р±РѕР№ СЃ С‚СЂСѓРїРѕРј
+
+            _stateSwitcher.SwitchState<FightState>();
         }
 
         private void MovePlayer()

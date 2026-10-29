@@ -1,4 +1,5 @@
-﻿using CloudeDev.Game.Player.State;
+﻿using CloudeDev.Game.Combat;
+using CloudeDev.Game.Player.State;
 using CloudeDev.Game.StateMachine;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,15 @@ namespace CloudeDev.Game.Player
     {
         private IPlayerView _playerView;
         private readonly IPlayerStats _statsModel;
+        private readonly TurnBasedCombatController _combat;
         private IState _currentState;
         private List<IState> _states;
         private bool _isInitialized;
 
-        public PlayerStateMachine(IPlayerStats statsModel)
+        public PlayerStateMachine(IPlayerStats statsModel, TurnBasedCombatController combat)
         {
             _statsModel = statsModel;
+            _combat = combat;
         }
 
         public void Initialize(IPlayerView playerView)
@@ -26,7 +29,7 @@ namespace CloudeDev.Game.Player
         {
             new IdleState(_statsModel, this, _playerView),
             new RunningState(_statsModel, this, _playerView),
-            new FightState(_statsModel, this, _playerView),
+            new FightState(_statsModel, this, _playerView, _combat),
             new DeadState(_statsModel, this, _playerView)
         };
             _currentState = _states[0];

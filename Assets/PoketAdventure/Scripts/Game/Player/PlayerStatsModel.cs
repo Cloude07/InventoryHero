@@ -6,6 +6,13 @@ namespace CloudeDev.Game.Player
     public class PlayerStatsModel : IPlayerStats
     {
         public event Action<StatsPlayer, int> OnStatsChanged;
+
+        public int Luck
+        {
+            get => _luck;
+            private set => _luck = Mathf.Clamp(value, 0, 100);
+        }
+
         public int Level
         {
             get => _level;
@@ -64,9 +71,11 @@ namespace CloudeDev.Game.Player
         private int _dexterity;
         private int _coin;
         private int _speed;
+        private int _luck;
 
-        public PlayerStatsModel(int level, int health, int maxHealth, int armor, int maxArmor,
-                    int strength, int dexterity, int coin, int speed)
+        public PlayerStatsModel(int level, int health, int maxHealth,
+            int armor, int maxArmor, int strength, int dexterity,
+            int coin, int speed, int luck)                            
         {
             _level = level;
             _health = health;
@@ -77,6 +86,7 @@ namespace CloudeDev.Game.Player
             _dexterity = dexterity;
             _coin = coin;
             _speed = speed;
+            _luck = Mathf.Clamp(luck, 0, 100);           
         }
 
         public void ChangeStats(int value, StatsPlayer statsType)
@@ -92,6 +102,7 @@ namespace CloudeDev.Game.Player
                 case StatsPlayer.Dexterity: Dexterity += value; break;
                 case StatsPlayer.Coin: Coin += value; break;
                 case StatsPlayer.Speed: Speed += value; break;
+                case StatsPlayer.Luck: Luck += value; break;
                 default: return;
             }
 
@@ -113,7 +124,8 @@ namespace CloudeDev.Game.Player
             StatsPlayer.Strength => Strength,
             StatsPlayer.Dexterity => Dexterity,
             StatsPlayer.Coin => Coin,
-            StatsPlayer.Speed => Speed,        
+            StatsPlayer.Speed => Speed,
+            StatsPlayer.Luck => Luck,
             _ => 0
         };
     }

@@ -10,6 +10,7 @@ namespace CloudeDev.Game.Player
         Strength,
         Dexterity,
         Coin,
-        Speed
+        Speed,
+        Luck
     }
 }
