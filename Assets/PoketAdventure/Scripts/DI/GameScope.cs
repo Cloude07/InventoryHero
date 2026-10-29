@@ -53,7 +53,7 @@ namespace CloudeDev.DI
             builder.Register<PlayerCombatant>(Lifetime.Singleton);
             builder.RegisterComponent(_combatController);
 
-            builder.Register<LevelController>(Lifetime.Singleton).As<IStartable>();
+            builder.Register<LevelController>(Lifetime.Singleton).As<IStartable>().As<ITickable>();
 
             // Entry Point
             builder.RegisterEntryPoint<GameEntryPoint>();

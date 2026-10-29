@@ -14,7 +14,6 @@ namespace CloudeDev.Game.Enemy
         [SerializeField] private int _damage;
         [SerializeField] private int _defense;
         [SerializeField] private int _blockChance;
-        [SerializeField] private Slider _healthSlider;
         public int DamageAmount => _damage;         
         public int Defense => _defense;
         public int BlockChance => _blockChance;
@@ -27,22 +26,25 @@ namespace CloudeDev.Game.Enemy
         private EnemyStateMachine _StateMachine;
         private bool _isDead = false;
 
-        private void OnEnable()
-        {
-            _healthSlider.maxValue = _heath;
-            _healthSlider.value = _heath;
-        }
+        [SerializeField] private EnemyHealthBar _healthBar;   // ← новое
+
+        private float _maxHeath;
+
 
         public void Damage(float damage)
         {
             if (_isDead) return;
 
             _heath -= damage;
-            _healthSlider.value = _heath;
+
+            if (_healthBar != null)
+                _healthBar.SetHealth(_heath, _maxHeath);
+
             if (_heath <= 0)                      
             {
                 _heath = 0;
                 _isDead = true;
+                if (_healthBar != null) _healthBar.Hide();
                 _StateMachine?.SwitchState<DeadEnemyState>();
             }
             else
@@ -53,14 +55,20 @@ namespace CloudeDev.Game.Enemy
 
         public void OnSpawn(SOEnemyData enemyData, EnemyPool pool)
         {
-            _heath = enemyData.health;
             _damage = enemyData.damage;
             _attackType = enemyData.attackType;
             _distance = enemyData.distance;
             _defense = enemyData.defense;
             _blockChance = enemyData.blockChance;
+            _heath = enemyData.health;
             _pool = pool;
             _isDead = false;
+            _maxHeath = enemyData.health;
+
+
+            if (_healthBar != null)
+                _healthBar.ResetSilent(_heath, _maxHeath);
+
 
             _StateMachine = new EnemyStateMachine(this ,_animator, _attackType, this._PosDamage, _distance, _damage);
             _StateMachine.SwitchState<IdleEnemyState>();

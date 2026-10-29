@@ -7,7 +7,7 @@ using VContainer.Unity;
 
 namespace CloudeDev.Game
 {
-    public class LevelController : IDisposable, IStartable
+    public class LevelController : IDisposable, IStartable, ITickable
     {
         private EnemyPool _pool;
         private IPlayerView _Player;
@@ -15,6 +15,7 @@ namespace CloudeDev.Game
         public void Dispose()
         {
             _pool.OnAllEnemiesDefeated -= OnLevelCompleted;
+            
         }
 
         public void Start()
@@ -30,6 +31,13 @@ namespace CloudeDev.Game
          
         }
 
+        private void OnLevelFailed()
+        {
+            Debug.Log("Уровень не пройден!");
+            // Показать UI проиграша, заново или на карту.
+            _Player.Lose();
+        }
+
         private void OnLevelCompleted()
         {
             Debug.Log("Уровень пройден!");
@@ -37,12 +45,10 @@ namespace CloudeDev.Game
             _Player.Win();
         }
 
-        private void OnLevelLose()
+        public void Tick()
         {
-            Debug.Log("Уровень не пройден!");
-            // Показать UI победы, загрузить следующий уровень и т.д.
+           if(_Player.Health <= 0)
+                OnLevelFailed();
         }
-
-
     }
 }

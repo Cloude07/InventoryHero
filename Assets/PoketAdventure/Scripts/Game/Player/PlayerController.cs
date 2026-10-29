@@ -72,5 +72,10 @@ namespace CloudeDev.Game.Player
             if (_playerHealth != null)
                 _playerHealth.OnPlayerDied -= _playerHealth_OnPlayerDied;
         }
+
+        public void Lose()
+        {
+            _playerStateMachine.SwitchState<DeadState>();
+        }
     }
 }
