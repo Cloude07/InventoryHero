@@ -16,4 +16,6 @@ MonoBehaviour:
   attackType: 1
   damage: 2
   health: 15
+  defense: 0
+  blockChance: 4
   distance: 1

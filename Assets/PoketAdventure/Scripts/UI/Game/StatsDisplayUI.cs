@@ -13,6 +13,7 @@ namespace CloudeDev.UI
         [SerializeField] private TMP_Text _armorText;
         [SerializeField] private TMP_Text _damageText;
         [SerializeField] private TMP_Text _dexterityText;
+        [SerializeField] private TMP_Text _LuckyText;
 
         [Header("Health")]
         [SerializeField] private TMP_Text _coinText;
@@ -35,6 +36,9 @@ namespace CloudeDev.UI
 
         public void ChangeTextCoinCurrent(string value) =>
             _coinText.SetText($"Coin: {value}");
+
+        public void ChangeTextLuckCurrent(string value) =>
+            _LuckyText.SetText($"Luck: {value}");
 
         public void ChangeSliderHealth(int current, int max)
         {

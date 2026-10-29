@@ -70,6 +70,7 @@ namespace CloudeDev.Game.Ui
             _statsDisplayUI.ChangeTextDexterity(_playerStats.Dexterity.ToString());
             _statsDisplayUI.ChangeTextCoinCurrent(_playerStats.Coin.ToString());
             _statsDisplayUI.ChangeSliderHealth(_playerStats.Health, _playerStats.MaxHealth);
+            _statsDisplayUI.ChangeTextLuckCurrent(_playerStats.Luck.ToString());
         
         }
 
@@ -95,6 +96,9 @@ namespace CloudeDev.Game.Ui
                     break;
                 case StatsPlayer.Coin:
                     _statsDisplayUI.ChangeTextCoinCurrent(newValue.ToString());
+                    break;
+                case StatsPlayer.Luck:
+                    _statsDisplayUI.ChangeTextLuckCurrent(newValue.ToString());
                     break;
             }
         }

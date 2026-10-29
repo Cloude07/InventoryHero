@@ -1,6 +1,7 @@
 using UnityEngine;
 using CloudeDev.Game.Enemy.State;
 using CloudeDev.Game.Enemy.Pool;
+using UnityEngine.UI;
 
 namespace CloudeDev.Game.Enemy
 {
@@ -13,6 +14,7 @@ namespace CloudeDev.Game.Enemy
         [SerializeField] private int _damage;
         [SerializeField] private int _defense;
         [SerializeField] private int _blockChance;
+        [SerializeField] private Slider _healthSlider;
         public int DamageAmount => _damage;         
         public int Defense => _defense;
         public int BlockChance => _blockChance;
@@ -25,12 +27,18 @@ namespace CloudeDev.Game.Enemy
         private EnemyStateMachine _StateMachine;
         private bool _isDead = false;
 
+        private void OnEnable()
+        {
+            _healthSlider.maxValue = _heath;
+            _healthSlider.value = _heath;
+        }
 
         public void Damage(float damage)
         {
             if (_isDead) return;
 
-            _heath -= damage;                        
+            _heath -= damage;
+            _healthSlider.value = _heath;
             if (_heath <= 0)                      
             {
                 _heath = 0;
