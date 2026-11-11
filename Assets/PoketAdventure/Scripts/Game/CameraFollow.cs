@@ -12,7 +12,7 @@ namespace CloudeDev.Game
         private Vector3 _velocity = Vector3.zero;
 
         private float smoothTime = 0.125f;   
-        private Vector3 offset = new Vector3(5, -1.5f, -10f); 
+        private Vector3 offset = new Vector3(5, -1.8f, -10f); 
 
         [Inject]
         private void Construct(IPlayerView playerView)

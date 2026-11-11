@@ -20,9 +20,10 @@ namespace CloudeDev.Game.Inventory
         public ItemConfig ItemConfig9;
 
         [Header("References")]
-        public GameObject inventoryObject;
-        public GameObject inventoryEquipedObject;
-        public Image dragItemIcon;
+        [SerializeField] private GameObject inventoryObject;
+        [SerializeField] private GameObject inventoryEquipedObject;
+        [SerializeField] private Image dragItemIcon;
+        [SerializeField] private RectTransform _inventoryPanel;
 
         private IPlayerStatsModifier playerStats;
         private IPlayerStatsReadonly playerStatsRead;
@@ -42,6 +43,8 @@ namespace CloudeDev.Game.Inventory
 
             allSlots.AddRange(inventorySlots);
             allSlots.AddRange(inventoryEquipedSlots);
+
+            _inventoryPanel = this.gameObject.GetComponent<RectTransform>();
 
         }
 
@@ -166,8 +169,17 @@ namespace CloudeDev.Game.Inventory
             if (Input.GetMouseButtonUp(0) && IsDraging)
             {
                 ISlot hovered = GetHoveredSlot();
+
                 if (hovered != null)
+                {
                     HandleDrop(draggetSlot, hovered);
+                }
+                else if (!IsOverInventoryPanel())
+                {
+                    // 🔴 курсор вне панели инвентаря и не над слотом — выбрасываем
+                    DiscardItem(draggetSlot);
+                }
+                // иначе — просто отмена (бросили над панелью, но не в слот)
 
                 dragItemIcon.enabled = false;
                 draggetSlot = null;
@@ -202,6 +214,20 @@ namespace CloudeDev.Game.Inventory
         }
 
         // ---------------- DROP ----------------
+
+        private void DiscardItem(ISlot slot)
+        {
+            if (slot == null || !slot.IsHasItem()) return;
+
+            ItemConfig item = slot.GetItem();
+            int amount = slot.GetItemAmount();
+
+            // (опционально) запрет на выбрасывание квестовых/уникальных предметов
+            // if (!item.canBeDiscarded) return;
+
+            slot.ClearSlot();
+            Debug.Log($"[Inventory] Discarded {amount}x {item.nameItem}");
+        }
 
         private void HandleDrop(ISlot from, ISlot to)
         {
@@ -304,6 +330,23 @@ namespace CloudeDev.Game.Inventory
                 from.ClearSlot();
                 to.SetItem(item, amount);
             }
+        }
+
+        private bool IsOverInventoryPanel()
+        {
+            if (_inventoryPanel == null) return true;   // если не назначено — считаем "внутри"
+
+            Camera cam = null;
+            if (dragItemIcon != null && dragItemIcon.canvas != null &&
+                dragItemIcon.canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+            {
+                cam = dragItemIcon.canvas.worldCamera != null
+                    ? dragItemIcon.canvas.worldCamera
+                    : Camera.main;
+            }
+
+            return RectTransformUtility.RectangleContainsScreenPoint(
+                _inventoryPanel, Input.mousePosition, cam);
         }
 
         // ---------------- HOVER ----------------

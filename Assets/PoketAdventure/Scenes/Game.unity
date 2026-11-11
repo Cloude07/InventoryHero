@@ -1322,7 +1322,11 @@ MonoBehaviour:
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 7910667562332979283
+    - rid: 7910667562332979283
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -8864,6 +8868,7 @@ MonoBehaviour:
   inventoryObject: {fileID: 1709973968}
   inventoryEquipedObject: {fileID: 3924338947610119399}
   dragItemIcon: {fileID: 1558715127}
+  _inventoryPanel: {fileID: 0}
 --- !u!222 &8340312540150608846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8884,8 +8889,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3475813430471836399}
   - {fileID: 2191404415959875997}
+  - {fileID: 3475813430471836399}
   - {fileID: 6818383361268557219}
   - {fileID: 7069037964625155585}
   - {fileID: 283459435}
