@@ -46,44 +46,9 @@ namespace CloudeDev.Game.Inventory
 
         private void Update()
         {
-
-            TryUseHoveredItem();   // правый клик — использовать
             StartDrag();
             UpdateDragItemPosition();
             EndDrag();
-        }
-
-        // ---------------- ИСПОЛЬЗОВАНИЕ (ПКМ) ----------------
-
-        private void TryUseHoveredItem()
-        {
-            if (IsDraging) return;
-            if (!Input.GetMouseButtonDown(1)) return;
-
-            var hovered = GetHoveredSlot();
-            if (hovered == null || hovered is EquipedSlot) return;
-            if (!hovered.IsHasItem() || playerStats == null || playerStatsRead == null) return;
-
-            var item = hovered.GetItem();
-
-            switch (item.itemType)
-            {
-                case ItemType.HealthPoint:
-                    // 🔴 проверка: не тратим аптечку, если HP уже полное
-                    if (playerStatsRead.Health >= playerStatsRead.MaxHealth) return;
-
-                    playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Health);
-                    hovered.RemoveItemAmount(1, item);
-                    return;   // ← выходим, чтобы нижний RemoveItemAmount не сработал
-
-                case ItemType.Coin:
-                    playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Coin);
-                    hovered.RemoveItemAmount(1, item);
-                    return;
-
-                default:
-                    return;   // не расходник — ничего не делаем
-            }
         }
 
 
@@ -156,8 +121,10 @@ namespace CloudeDev.Game.Inventory
                 }
                 else if (!IsOverInventoryPanel())
                 {
+
                     // 🔴 курсор вне панели инвентаря и не над слотом — выбрасываем
                     DiscardItem(draggetSlot);
+
                 }
                 // иначе — просто отмена (бросили над панелью, но не в слот)
 
@@ -204,6 +171,28 @@ namespace CloudeDev.Game.Inventory
 
             // (опционально) запрет на выбрасывание квестовых/уникальных предметов
             // if (!item.canBeDiscarded) return;
+
+            if(!item.isEquipingItem)
+            {
+                switch (item.itemType)
+                {
+                    case ItemType.HealthPoint:
+                        // 🔴 проверка: не тратим аптечку, если HP уже полное
+                        if (playerStatsRead.Health >= playerStatsRead.MaxHealth) return;
+
+                        playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Health);
+                        slot.RemoveItemAmount(1, item);
+                        return;   // ← выходим, чтобы нижний RemoveItemAmount не сработал
+
+                    case ItemType.Coin:
+                        playerStats.ChangeStats(item.itemAddValue, StatsPlayer.Coin);
+                        slot.RemoveItemAmount(1, item);
+                        return;
+
+                    default:
+                        return;   // не расходник — ничего не делаем
+                }
+            }
 
             slot.ClearSlot();
             Debug.Log($"[Inventory] Discarded {amount}x {item.nameItem}");
