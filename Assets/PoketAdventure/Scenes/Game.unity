@@ -8853,22 +8853,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8314247799608576576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5cbb7a1dc18d0f43b690619f10744ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d2d5af5184e1c34486761d73bce3d46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.Inventory
-  ItemConfig1: {fileID: 11400000, guid: 3a34505d3e3e673498c09aa70001360d, type: 2}
-  ItemConfig2: {fileID: 11400000, guid: 296d450d3537d524f831eb587c624e79, type: 2}
-  ItemConfig3: {fileID: 11400000, guid: b0b7c708361ac674bb0a8580a833e4e5, type: 2}
-  ItemConfig4: {fileID: 11400000, guid: 12b12b548edda3146a70ff48ba03107b, type: 2}
-  ItemConfig5: {fileID: 11400000, guid: cd521bd9ac29b184cb65390282752304, type: 2}
-  ItemConfig6: {fileID: 11400000, guid: 031976f3ed8816e44a7968fa22a18eaa, type: 2}
-  ItemConfig7: {fileID: 11400000, guid: 227dbc2383faa54459b3e06c1402d5fd, type: 2}
-  ItemConfig8: {fileID: 11400000, guid: 8e7b75f9e4597104d9d84e8517afa0c2, type: 2}
-  ItemConfig9: {fileID: 11400000, guid: 3750b9963c5de9a46be4d58c65bf41ed, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.InventoryManager
   inventoryObject: {fileID: 1709973968}
   inventoryEquipedObject: {fileID: 3924338947610119399}
   dragItemIcon: {fileID: 1558715127}
-  _inventoryPanel: {fileID: 0}
+  _inventoryPanel: {fileID: 1709973969}
 --- !u!222 &8340312540150608846
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -14,6 +14,13 @@ namespace CloudeDev.Game.Inventory
     [CreateAssetMenu(fileName = "ItemConfig", menuName = "Configs/ItemConfig")]
     public class ItemConfig : ScriptableObject
     {
+        [Header("Drop Settings")]
+        [SerializeField] private int _minDropAmount = 1;
+        [SerializeField] private int _maxDropAmount = 1;
+
+        public int MinDropAmount => Mathf.Max(0, _minDropAmount);
+        public int MaxDropAmount => Mathf.Max(MinDropAmount, _maxDropAmount);
+
         public string nameItem;
         public Sprite icon;
         public ItemType itemType;

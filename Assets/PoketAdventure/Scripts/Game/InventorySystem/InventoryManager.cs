@@ -6,19 +6,8 @@ using VContainer;
 
 namespace CloudeDev.Game.Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class InventoryManager : MonoBehaviour
     {
-        [Header("Test")]
-        public ItemConfig ItemConfig1;
-        public ItemConfig ItemConfig2;
-        public ItemConfig ItemConfig3;
-        public ItemConfig ItemConfig4;
-        public ItemConfig ItemConfig5;
-        public ItemConfig ItemConfig6;
-        public ItemConfig ItemConfig7;
-        public ItemConfig ItemConfig8;
-        public ItemConfig ItemConfig9;
-
         [Header("References")]
         [SerializeField] private GameObject inventoryObject;
         [SerializeField] private GameObject inventoryEquipedObject;
@@ -57,15 +46,6 @@ namespace CloudeDev.Game.Inventory
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) AddItem(ItemConfig1, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) AddItem(ItemConfig2, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) AddItem(ItemConfig3, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha4)) AddItem(ItemConfig4, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha5)) AddItem(ItemConfig5, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha6)) AddItem(ItemConfig6, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha7)) AddItem(ItemConfig7, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha8)) AddItem(ItemConfig8, 1);
-            if (Input.GetKeyDown(KeyCode.Alpha9)) AddItem(ItemConfig9, 1);
 
             TryUseHoveredItem();   // правый клик — использовать
             StartDrag();

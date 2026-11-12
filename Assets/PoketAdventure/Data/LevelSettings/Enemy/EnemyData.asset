@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:CloudeDev.Game.Enemy:SOEnemyData
   enemyPrefab: {fileID: 892392469625520140, guid: 435f66ba1f58e1044b343cce03f0d729, type: 3}
   attackType: 1
+  itemConfig:
+  - {fileID: 11400000, guid: 45828b83181a801429ff83df6faf1d92, type: 2}
+  - {fileID: 11400000, guid: 9d8d25c72a3e8024d9f8e35d13f8b4cb, type: 2}
+  - {fileID: 11400000, guid: 031976f3ed8816e44a7968fa22a18eaa, type: 2}
   damage: 2
   health: 15
   defense: 0

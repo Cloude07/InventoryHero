@@ -1,8 +1,10 @@
+using CloudeDev.Game.Inventory;
 using CloudeDev.Game.Player;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
+using static UnityEditor.Progress;
 
 namespace CloudeDev.Game.Enemy.Pool
 {
@@ -10,12 +12,12 @@ namespace CloudeDev.Game.Enemy.Pool
     {
         [SerializeField] private SOSettingsLevel settingsPool;
         private Queue<GameObject> pool = new Queue<GameObject>();
+        private InventoryManager _inventory;
         private IPlayerView _playerView;
 
-        private int _totalEnemies;      // всего врагов в уровне
-        private int _enemiesDefeated;   // сколько убито
+        private int _totalEnemies;      
+        private int _enemiesDefeated;   
 
-        // Событие, на которое подпишется менеджер уровня
         public event Action OnAllEnemiesDefeated;
 
         private void Start()
@@ -43,11 +45,11 @@ namespace CloudeDev.Game.Enemy.Pool
             enemyObj.SetActive(true);
         }
 
-        private GameObject CreateNewEnemy(SOEnemyData character)
+        private GameObject CreateNewEnemy(SOEnemyData enemyCharacter)
         {
-            GameObject obj = Instantiate(character.enemyPrefab, transform);
-            EnemyController enemy = obj.GetComponent<EnemyController>();
-            enemy.OnSpawn(character, this);
+            GameObject obj = Instantiate(enemyCharacter.enemyPrefab, transform);
+            EnemyController enemyController = obj.GetComponent<EnemyController>();
+            enemyController.OnSpawn(enemyCharacter, this);
             return obj;
         }
 
@@ -71,9 +73,22 @@ namespace CloudeDev.Game.Enemy.Pool
         }
 
         [Inject]
-        private void Construct(IPlayerView playerView)
+        private void Construct(IPlayerView playerView, InventoryManager inventory)
         {
             _playerView = playerView;
+            _inventory = inventory;
+        }
+
+        public void DropItem(ItemConfig item)
+        {
+            if (item == null) return;
+
+            int amount = UnityEngine.Random.Range(item.MinDropAmount, item.MaxDropAmount + 1);
+            if (amount <= 0) return;   // 0 = предмет не выпал
+
+            _inventory.AddItem(item, amount);
+
+
         }
     }
 }

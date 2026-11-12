@@ -17,7 +17,7 @@ namespace CloudeDev.DI
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private PlayerStatsUI _playerStatsUI;
         [SerializeField] private EnemyPool _enemyPool;
-        [SerializeField] private Inventory _inventory;
+        [SerializeField] private InventoryManager _inventory;
         [SerializeField] private TurnBasedCombatController _combatController;
         protected override void Configure(IContainerBuilder builder)
         {

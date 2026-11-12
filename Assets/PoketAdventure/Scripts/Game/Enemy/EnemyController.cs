@@ -1,8 +1,7 @@
 using UnityEngine;
 using CloudeDev.Game.Enemy.State;
 using CloudeDev.Game.Enemy.Pool;
-using UnityEngine.UI;
-using System;
+using CloudeDev.Game.Inventory;
 
 namespace CloudeDev.Game.Enemy
 {
@@ -27,6 +26,9 @@ namespace CloudeDev.Game.Enemy
         private EnemyPool _pool;
         private EnemyStateMachine _StateMachine;
         private bool _isDead = false;
+        private bool _deathHandled;
+        int _random;
+        private ItemConfig _itemConfig;
 
         [SerializeField] private EnemyHealthBar _healthBar;   // ← новое
 
@@ -63,9 +65,17 @@ namespace CloudeDev.Game.Enemy
             _isDead = false;
             _maxHeath = enemyData.health;
 
-
             if (_healthBar != null)
                 _healthBar.ResetSilent(_heath, _maxHeath);
+
+            _itemConfig = null;
+            if (enemyData.itemConfig != null && enemyData.itemConfig.Length > 0)
+            {
+                int idx = Random.Range(0, enemyData.itemConfig.Length);
+                _itemConfig = enemyData.itemConfig[idx];
+            }
+
+            _deathHandled = false;
 
 
             _StateMachine = new EnemyStateMachine(this ,_animator, _attackType, this._PosDamage, _distance, _damage);
@@ -80,7 +90,12 @@ namespace CloudeDev.Game.Enemy
 
         public void Death()
         {
-            Debug.Log($"[Enemy] Death called for {name}");
+            if (_deathHandled) return;
+            _deathHandled = true;
+
+            if (_itemConfig != null)
+                _pool.DropItem(_itemConfig);
+
             _pool.ReturnEnemy(gameObject);
         }
 
