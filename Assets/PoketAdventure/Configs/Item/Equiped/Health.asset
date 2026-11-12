@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.Inventory.ItemConfig
+  _minDropAmount: 1
+  _maxDropAmount: 4
   nameItem: Health
   icon: {fileID: 1018383391595562092, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
   itemType: 2

@@ -1,4 +1,5 @@
 using CloudeDev.Game.Player;
+using CloudeDev.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ namespace CloudeDev.Game.Inventory
         [SerializeField] private GameObject inventoryEquipedObject;
         [SerializeField] private Image dragItemIcon;
         [SerializeField] private RectTransform _inventoryPanel;
+        [SerializeField] private ItemPickupPopupUI _pickupPopup;
+        [SerializeField] private ItemDragTooltipUI _dragTooltip;  
 
         private IPlayerStatsModifier playerStats;
         private IPlayerStatsReadonly playerStatsRead;
@@ -52,11 +55,11 @@ namespace CloudeDev.Game.Inventory
         }
 
 
-        public void AddItem(ItemConfig itemToAdd, int amount)
+        public void AddItem(ItemConfig itemToAdd, int amount, bool showPopup = true)
         {
+            int originalAmount = amount;
             int remaining = amount;
 
-            // Дозаполняем существующие стаки — ТОЛЬКО инвентарь
             foreach (ISlot slot in inventorySlots)
             {
                 if (slot.IsHasItem() && slot.GetItem() == itemToAdd)
@@ -69,25 +72,31 @@ namespace CloudeDev.Game.Inventory
                         int amountToAdd = Mathf.Min(spaceLeft, remaining);
                         slot.SetItem(itemToAdd, currentAmount + amountToAdd);
                         remaining -= amountToAdd;
-                        if (remaining <= 0) return;
+                        if (remaining <= 0) break;
                     }
                 }
             }
 
-            // Кладём в пустые — ТОЛЬКО инвентарь
-            foreach (ISlot slot in inventorySlots)
+            if (remaining > 0)
             {
-                if (!slot.IsHasItem())
+                foreach (ISlot slot in inventorySlots)
                 {
-                    int amountToPlace = Mathf.Min(itemToAdd.maxStackSize, remaining);
-                    slot.SetItem(itemToAdd, amountToPlace);
-                    remaining -= amountToPlace;
-                    if (remaining <= 0) return;
+                    if (!slot.IsHasItem())
+                    {
+                        int amountToPlace = Mathf.Min(itemToAdd.maxStackSize, remaining);
+                        slot.SetItem(itemToAdd, amountToPlace);
+                        remaining -= amountToPlace;
+                        if (remaining <= 0) break;
+                    }
                 }
             }
 
+            int added = originalAmount - remaining;
+            if (added > 0 && showPopup && _pickupPopup != null)
+                _pickupPopup.ShowInventoryItem(itemToAdd, added);
+
             if (remaining > 0)
-                Debug.Log($"Inventory is full, could not add {remaining} of {itemToAdd.nameItem}");
+                Debug.Log($"[Inventory] Full, could not add {remaining} of {itemToAdd.nameItem}");
         }
 
 
@@ -101,10 +110,18 @@ namespace CloudeDev.Game.Inventory
                     draggetSlot = hovered;
                     IsDraging = true;
 
-                    dragItemIcon.sprite = hovered.GetItem().icon;
+                    var item = hovered.GetItem();
+                    dragItemIcon.sprite = item.icon;
                     dragItemIcon.color = colorDragItem;
                     dragItemIcon.enabled = true;
                     dragItemIcon.transform.SetAsLastSibling();
+
+                    // 🔴 показать tooltip со статами + сравнение с экипированным
+                    if (_dragTooltip != null)
+                    {
+                        ItemConfig currentlyEquipped = GetEquippedItemFor(item);
+                        _dragTooltip.Show(item, currentlyEquipped);
+                    }
                 }
             }
         }
@@ -116,22 +133,32 @@ namespace CloudeDev.Game.Inventory
                 ISlot hovered = GetHoveredSlot();
 
                 if (hovered != null)
-                {
                     HandleDrop(draggetSlot, hovered);
-                }
                 else if (!IsOverInventoryPanel())
-                {
-
-                    // 🔴 курсор вне панели инвентаря и не над слотом — выбрасываем
                     DiscardItem(draggetSlot);
-
-                }
-                // иначе — просто отмена (бросили над панелью, но не в слот)
 
                 dragItemIcon.enabled = false;
                 draggetSlot = null;
                 IsDraging = false;
+
+                if (_dragTooltip != null)
+                    _dragTooltip.Hide();   // 🔴 скрыть
             }
+        }
+
+        private ItemConfig GetEquippedItemFor(ItemConfig newItem)
+        {
+            if (newItem == null || !newItem.isEquipingItem) return null;
+
+            var expectedSlotType = ItemEquipHelper.ToEquipedType(newItem.itemType);
+            if (expectedSlotType == null) return null;
+
+            foreach (var slot in inventoryEquipedSlots)
+            {
+                if (slot is EquipedSlot eq && eq.TypeEquiped == expectedSlotType.Value)
+                    return eq.GetItem();
+            }
+            return null;
         }
 
         private void UpdateDragItemPosition()
@@ -269,7 +296,7 @@ namespace CloudeDev.Game.Inventory
                 if (!from.IsHasItem())
                     from.SetItem(prevItem, prevAmount);
                 else
-                    AddItem(prevItem, prevAmount);
+                    AddItem(prevItem, prevAmount, showPopup: false);
             }
         }
 

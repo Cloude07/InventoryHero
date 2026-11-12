@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: Tunic
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
-  _itemType: 1
-  _icon: {fileID: -6464482783528114672, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
-  _name: Tunic
-  _description: Just Tunic. basic journe armor
-  _count: 1
-  _isEquipingItem: 1
-  _eqipedType: 1
+  _minDropAmount: 1
+  _maxDropAmount: 1
+  nameItem: 
+  icon: {fileID: -6464482783528114672, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
+  itemType: 3
+  objectItemEquiped: {fileID: 0}
+  maxStackSize: 1
+  itemAddValue: 0
+  isEquipingItem: 0
+  modifiers:
+  - stat: 3
+    value: 14

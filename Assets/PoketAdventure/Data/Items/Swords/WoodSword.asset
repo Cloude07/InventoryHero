@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3201835b861464647b51ea69010c9f9d, type: 3}
   m_Name: WoodSword
   m_EditorClassIdentifier: Assembly-CSharp::CloudeDev.Game.ItemManager.ItemConfig
+  _minDropAmount: 1
+  _maxDropAmount: 1
   nameItem: Sword 1lv
   icon: {fileID: -8000257237967149311, guid: 93df4da9c4b42894e9779603b06f703a, type: 3}
   itemType: 4
